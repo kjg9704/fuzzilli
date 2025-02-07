@@ -60,6 +60,8 @@ public class Fuzzer {
     /// The corpus of "interesting" programs found so far.
     public let corpus: Corpus
 
+    public let poc: PoC
+
     /// The minimizer to shrink programs that cause crashes or trigger new interesting behaviour.
     public let minimizer: Minimizer
 
@@ -157,7 +159,7 @@ public class Fuzzer {
     public init(
         configuration: Configuration, scriptRunner: ScriptRunner, engine: FuzzEngine, mutators: WeightedList<Mutator>,
         codeGenerators: WeightedList<CodeGenerator>, programTemplates: WeightedList<ProgramTemplate>, evaluator: ProgramEvaluator,
-        environment: Environment, lifter: Lifter, corpus: Corpus, minimizer: Minimizer, queue: DispatchQueue? = nil
+        environment: Environment, lifter: Lifter, corpus: Corpus, poc: PoC, minimizer: Minimizer, queue: DispatchQueue? = nil
     ) {
         let uniqueId = UUID()
         self.id = uniqueId
@@ -174,6 +176,7 @@ public class Fuzzer {
         self.environment = environment
         self.lifter = lifter
         self.corpus = corpus
+        self.poc = poc
         self.runner = scriptRunner
         self.minimizer = minimizer
         self.logger = Logger(withLabel: "Fuzzer")

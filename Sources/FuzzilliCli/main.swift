@@ -97,6 +97,7 @@ Options:
     --additionalArguments=args   : Pass additional arguments to the JS engine. If multiple arguments are passed, they should be separated by a comma.
     --tag=tag                    : Optional string tag associated with this instance which will be stored in the settings.json file as well as in crashing samples.
                                    This can for example be used to remember the target revision that is being fuzzed.
+    --importPoC=path             : Import PoC
 """)
     exit(0)
 }
@@ -143,6 +144,7 @@ let staticCorpus = args.has("--staticCorpus")
 let exportStatistics = args.has("--exportStatistics")
 let statisticsExportInterval = args.uint(for: "--statisticsExportInterval") ?? 10
 let corpusImportPath = args["--importCorpus"]
+let pocImportPath = args["--importPoC"]
 let corpusImportModeName = args["--corpusImportMode"] ?? "default"
 let instanceType = args["--instanceType"] ?? "standalone"
 let corpusSyncMode = args["--corpusSyncMode"] ?? "full"
@@ -360,6 +362,36 @@ func loadCorpus(from dirPath: String) -> [Program] {
     return programs
 }
 
+
+
+func loadPoCs(from dirPath: String) -> [Program] {
+    var isDir: ObjCBool = false
+    guard FileManager.default.fileExists(atPath: dirPath, isDirectory: &isDir) && isDir.boolValue else {
+        logger.fatal("Cannot import programs from \(dirPath), it is not a directory!")
+    }
+
+    var programs = [Program]()
+    let fileEnumerator = FileManager.default.enumerator(atPath: dirPath)
+    while let filename = fileEnumerator?.nextObject() as? String {
+        guard filename.hasSuffix(".fzil") else { continue }
+        let path = dirPath + "/" + filename
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            let pb = try Fuzzilli_Protobuf_Program(serializedBytes: data)
+            let program = try Program.init(from: pb)
+            if !program.isEmpty {
+                programs.append(program)
+            }
+        } catch {
+            logger.error("Failed to load program \(path): \(error). Skipping")
+        }
+    }
+
+    return programs
+}
+
+
+
 // When using multiple jobs, all Fuzzilli instances should use the same arguments for the JS shell, even if
 // argument randomization is enabled. This way, their corpora are "compatible" and crashes that require
 // (a subset of) the randomly chosen flags can be reproduced on the main instance.
@@ -464,6 +496,9 @@ func makeFuzzer(with configuration: Configuration) -> Fuzzer {
     default:
         logger.fatal("Invalid corpus name provided")
     }
+    // let poc: PoC
+    let poc = PoC(minSize: 10, maxSize: 1000)
+
 
     // Minimizer to minimize crashes and interesting programs.
     let minimizer = Minimizer()
@@ -479,6 +514,7 @@ func makeFuzzer(with configuration: Configuration) -> Fuzzer {
                   environment: environment,
                   lifter: lifter,
                   corpus: corpus,
+                  poc: poc,
                   minimizer: minimizer)
 }
 
@@ -606,6 +642,18 @@ fuzzer.sync {
         fuzzer.scheduleCorpusImport(corpus, importMode: corpusImportMode)
     }
 
+    if let pocPath = pocImportPath {
+        let poCs = loadPoCs(from: pocPath)
+        guard !poCs.isEmpty else {
+            logger.fatal("Cannot import an empty PoC set.")
+        }
+        logger.info("Importing \(poCs.count) PoCs from \(pocPath).")
+        for i in poCs {
+            fuzzer.poc.addPoC(i)  
+        }
+    }
+
+
     // Initialize the fuzzer, and run startup tests
     fuzzer.initialize()
     fuzzer.runStartupTests()
@@ -613,6 +661,7 @@ fuzzer.sync {
     // Start the main fuzzing job.
     fuzzer.start(runUntil: exitCondition)
 }
+
 
 // Add thread worker instances if requested
 // Worker instances use a slightly different configuration, mostly just a lower log level.

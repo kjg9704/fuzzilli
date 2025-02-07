@@ -79,16 +79,30 @@ public class HybridEngine: FuzzEngine {
         }
     }
 
+
     private func generateTemplateProgram(template: ProgramTemplate) -> Program {
         let b = fuzzer.makeBuilder()
-        b.traceHeader("Generating program based on \(template.name) template")
-        template.generate(in: b)
-        let program = b.finalize()
 
+        if let pocSample = fuzzer.poc.getRandomPoC() {  // 📌 PoC가 있으면 그대로 사용
+            b.traceHeader("Generating program based on PoC")
+            b.adopting(from: pocSample) {
+                for instr in pocSample.code {
+                    b.adopt(instr) 
+                }
+            }
+        } else {  // 📌 PoC가 없으면 기존 ProgramTemplate 사용
+            b.traceHeader("Generating program based on \(template.name) template")
+            template.generate(in: b)
+        }
+
+        let program = b.finalize()
         program.contributors.insert(template)
         template.addedInstructions(program.size)
+
         return program
     }
+
+
 
     public override func fuzzOne(_ group: DispatchGroup) {
         let template = fuzzer.programTemplates.randomElement()
