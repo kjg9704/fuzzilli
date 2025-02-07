@@ -1,0 +1,91 @@
+// ===== [ Program 0667AF11-4838-432A-BB3D-9F543A33DB59 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator ClassDefinitionGenerator
+v0 <- LoadFloat '-1.0118639055066083'
+v1 <- LoadInteger '9'
+v2 <- LoadFloat '-inf'
+v3 <- BeginClassDefinition
+    // Executing code generator ClassInstanceGetterGenerator
+    BeginClassInstanceGetter `h` -> v4
+        // Executing code generator BinaryOperationGenerator
+        v5 <- BinaryOperation v4, '&', v4
+        // Code generator finished
+        // Executing code generator ArgumentsAccessGenerator
+        v6 <- LoadArguments
+        // Code generator finished
+        // Executing code generator ReassignmentGenerator
+        Reassign v1, v5
+        // Code generator finished
+        // Executing code generator IntegerGenerator
+        v7 <- LoadInteger '-422822412'
+        v8 <- LoadInteger '-13'
+        v9 <- LoadInteger '-128'
+        // Code generator finished
+        Return v5
+    EndClassInstanceGetter
+    // Code generator finished
+    // Executing code generator ClassPrivateInstancePropertyGenerator
+    ClassAddPrivateInstanceProperty 'b' v2
+    // Code generator finished
+EndClassDefinition
+v10 <- Construct v3, []
+v11 <- Construct v3, []
+v12 <- Construct v3, []
+// Code generator finished
+// Executing code generator IntegerGenerator
+v13 <- LoadInteger '8'
+v14 <- LoadInteger '268435439'
+v15 <- LoadInteger '1000'
+// Code generator finished
+// End of prefix code. 10 variables are now visible
+// Executing code generator ReassignmentGenerator
+// Code generator finished
+// Executing code generator ReassignmentGenerator
+Reassign v13, v15
+// Code generator finished
+// Executing code generator GcGenerator
+v16 <- CreateNamedVariable 'gc', 'none'
+v17 <- CallFunction v16, []
+// Code generator finished
+// Executing code generator ForInLoopGenerator
+BeginForInLoop v10 -> v18
+    // Executing code generator ElementKindChangeGenerator
+    SetElement v10, '7', v15
+    // Code generator finished
+    // Executing code generator MethodCallWithSpreadGenerator
+    // Code generator finished
+    // Executing code generator UpdateGenerator
+    Update v11, '|', v11
+    // Code generator finished
+    // Executing code generator UpdateGenerator
+    Update v13, '|', v15
+    // Code generator finished
+    // Executing code generator BinaryOperationGenerator
+    v19 <- BinaryOperation v2, '<<', v1
+    // Code generator finished
+EndForInLoop
+// Code generator finished
+// Executing code generator ComputedPropertyAssignmentGenerator
+SetComputedProperty v12, v13, v17
+// Program may be interesting due to new coverage: 52 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program FA1BA256-8DC9-44BB-BF08-5E1B8D5415D5 ] =====
+// Minimizing 0667AF11-4838-432A-BB3D-9F543A33DB59
+v0 <- LoadFloat '-inf'
+v1 <- BeginClassDefinition
+    BeginClassInstanceGetter `h` -> v2
+    EndClassInstanceGetter
+    ClassAddPrivateInstanceProperty 'b' v0
+EndClassDefinition
+v3 <- Construct v1, []
+v4 <- LoadInteger '8'
+v5 <- CreateNamedVariable 'gc', 'none'
+v6 <- CallFunction v5, []
+BeginForInLoop v3 -> v7
+EndForInLoop
+SetComputedProperty v1, v4, v6
+// Program is interesting due to new coverage: 21 newly discovered edges in the CFG of the target
+
+

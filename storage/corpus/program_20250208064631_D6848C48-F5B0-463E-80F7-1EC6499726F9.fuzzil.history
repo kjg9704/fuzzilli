@@ -1,0 +1,60 @@
+// ===== [ Program D1890689-5F82-4BA7-BC99-4FF63F1DEE6B ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator IntegerGenerator
+v0 <- LoadInteger '-15'
+v1 <- LoadInteger '-1073741824'
+v2 <- LoadInteger '7'
+// Code generator finished
+// Executing code generator IntArrayGenerator
+v3 <- CreateIntArray [268435439, 3, -9223372036854775808, -841425245, -370629535, -65537, 4096]
+v4 <- CreateIntArray [4, -2125314518, -65536, 10, 3, 128]
+v5 <- CreateIntArray [16]
+// Code generator finished
+// Executing code generator FloatGenerator
+v6 <- LoadFloat '-1000000000.0'
+v7 <- LoadFloat '-749.8003086007066'
+v8 <- LoadFloat '1.7976931348623157e+308'
+// Code generator finished
+// Executing code generator IntegerGenerator
+v9 <- LoadInteger '3168'
+v10 <- LoadInteger '-6'
+v11 <- LoadInteger '4'
+// Code generator finished
+// End of prefix code. 12 variables are now visible
+// Executing code generator CallbackPropertyGenerator
+SetProperty v3, 'valueOf', v3
+// Code generator finished
+// Executing code generator BinaryOperationGenerator
+v12 <- BinaryOperation v2, '<<', v1
+// Code generator finished
+// Executing code generator ConstructorCallGenerator
+v13 <- Construct (guarded) v12, [v0, v8, v5]
+// Code generator finished
+// Executing code generator ArrayGenerator
+v14 <- CreateArray [v9, v13, v11, v1]
+v15 <- CreateArray [v8, v14, v1, v4]
+v16 <- CreateArray [v14, v4, v11, v15, v5]
+// Code generator finished
+// Executing code generator ReassignmentGenerator
+Reassign v5, v16
+// Code generator finished
+// Executing code generator IntegerGenerator
+v17 <- LoadInteger '2147483648'
+v18 <- LoadInteger '2147483649'
+v19 <- LoadInteger '4230'
+// Program may be interesting due to new coverage: 154 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program D6848C48-F5B0-463E-80F7-1EC6499726F9 ] =====
+// Minimizing D1890689-5F82-4BA7-BC99-4FF63F1DEE6B
+v0 <- LoadInteger '7'
+v1 <- CreateIntArray [268435439, 3, -9223372036854775808, -841425245, -370629535, -65537, 4096]
+v2 <- CreateIntArray [16]
+v3 <- LoadInteger '3168'
+SetProperty v1, 'valueOf', v1
+v4 <- Construct (guarded) v0, [v2, v3, v1, v2]
+v5 <- CreateArray [v3, v4]
+// Program is interesting due to new coverage: 132 newly discovered edges in the CFG of the target
+
+

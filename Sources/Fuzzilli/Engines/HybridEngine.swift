@@ -83,14 +83,14 @@ public class HybridEngine: FuzzEngine {
     private func generateTemplateProgram(template: ProgramTemplate) -> Program {
         let b = fuzzer.makeBuilder()
 
-        if let pocSample = fuzzer.poc.getRandomPoC() {  // 📌 PoC가 있으면 그대로 사용
-            b.traceHeader("Generating program based on PoC")
-            b.adopting(from: pocSample) {
-                for instr in pocSample.code {
-                    b.adopt(instr) 
-                }
+        if let pocSample = fuzzer.poc.getRandomPoC(), !pocSample.code.isEmpty { 
+            b.traceHeader("Generating program based on PoC + Template")
+            b.trace("Generating program based on PoC + Template")
+            for instr in pocSample.code { 
+                b.adopt(instr)
             }
-        } else {  // 📌 PoC가 없으면 기존 ProgramTemplate 사용
+            template.generate(in: b)  
+        } else { 
             b.traceHeader("Generating program based on \(template.name) template")
             template.generate(in: b)
         }
@@ -104,11 +104,13 @@ public class HybridEngine: FuzzEngine {
 
 
 
+
     public override func fuzzOne(_ group: DispatchGroup) {
         let template = fuzzer.programTemplates.randomElement()
 
         let generatedProgram = generateTemplateProgram(template: template)
 
+        self.logger.info("Generated Program : \(generatedProgram)")
         // Update basic codegen statistics.
         totalInstructionsGenerated += generatedProgram.size
         programsGenerated += 1

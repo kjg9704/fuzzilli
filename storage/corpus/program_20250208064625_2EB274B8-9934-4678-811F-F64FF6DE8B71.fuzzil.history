@@ -1,0 +1,146 @@
+// ===== [ Program AA8DB5FA-94F8-4F8B-A40F-8C76B3EC2C13 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator ClassDefinitionGenerator
+v0 <- LoadInteger '129'
+v1 <- LoadFloat '-2.2250738585072014e-308'
+v2 <- LoadFloat '0.0'
+v3 <- BeginClassDefinition
+    // Executing code generator ClassPrivateInstancePropertyGenerator
+    ClassAddPrivateInstanceProperty 'h' v0
+    // Code generator finished
+    // Executing code generator ClassStaticSetterGenerator
+    BeginClassStaticSetter `a` -> v4, v5
+        // Executing code generator SuperMethodCallGenerator
+        BeginTry
+            v6 <- CallSuperMethod 'm', [v2, v4, v4]
+        BeginCatch -> v7
+        EndTryCatch
+        // Code generator finished
+    EndClassStaticSetter
+    // Code generator finished
+    // Executing code generator ClassStaticPropertyGenerator
+    ClassAddStaticProperty 'h' v2
+    // Code generator finished
+    // Executing code generator ClassStaticMethodGenerator
+    BeginClassStaticMethod 'o' -> v8, v9, v10
+        // Executing code generator WeirdClassGenerator
+        v11 <- BeginPlainFunction -> v12
+            Return v8
+        EndPlainFunction
+        v13 <- BeginClassDefinition v11
+            // Executing code generator ClassPrivateStaticPropertyGenerator
+            ClassAddPrivateStaticProperty 'a'
+            // Code generator finished
+            // Executing code generator ClassInstanceComputedPropertyGenerator
+            ClassAddInstanceComputedProperty v2
+            // Code generator finished
+            // Executing code generator ClassInstanceElementGenerator
+            ClassAddInstanceElement '-1'
+            // Code generator finished
+            // Executing code generator ClassStaticElementGenerator
+            ClassAddStaticElement '10' v9
+            // Code generator finished
+        EndClassDefinition
+        // Code generator finished
+        Return v9
+    EndClassStaticMethod
+    // Code generator finished
+EndClassDefinition
+v14 <- Construct v3, []
+v15 <- Construct v3, []
+v16 <- Construct v3, []
+// Code generator finished
+// Executing code generator IntegerGenerator
+v17 <- LoadInteger '-4096'
+v18 <- LoadInteger '92363555'
+v19 <- LoadInteger '4294967296'
+// Code generator finished
+// Executing code generator BigIntGenerator
+v20 <- LoadBigInt '24729'
+v21 <- LoadBigInt '-16'
+v22 <- LoadBigInt '-1'
+// Code generator finished
+// Executing code generator ClassDefinitionGenerator
+v23 <- BeginClassDefinition v3
+    // Executing code generator ClassPrivateInstanceMethodGenerator
+    BeginClassPrivateInstanceMethod 'valueOf' -> v24, v25, v26
+        // Executing code generator ConstructorCallGenerator
+        v27 <- Construct v3, []
+        // Code generator finished
+        // Executing code generator ComputedPropertyRetrievalGenerator
+        v28 <- GetComputedProperty v15, v2
+        // Code generator finished
+        // Executing code generator TypedArrayGenerator
+        v29 <- LoadInteger '1000'
+        v30 <- CreateNamedVariable 'Int32Array', 'none'
+        v31 <- Construct v30, [v29]
+        v32 <- LoadInteger '3'
+        v33 <- CreateNamedVariable 'BigInt64Array', 'none'
+        v34 <- Construct v33, [v32]
+        v35 <- LoadInteger '1024'
+        v36 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+        v37 <- Construct v36, [v35]
+        // Code generator finished
+        Return v15
+    EndClassPrivateInstanceMethod
+    // Code generator finished
+    // Executing code generator ClassInstancePropertyGenerator
+    ClassAddInstanceProperty 'f'
+    // Code generator finished
+EndClassDefinition
+v38 <- Construct v23, []
+v39 <- Construct v23, []
+v40 <- Construct v23, []
+// Code generator finished
+// End of prefix code. 17 variables are now visible
+// Executing code generator ComputedPropertyAssignmentGenerator
+SetComputedProperty v40, v40, v21
+// Code generator finished
+// Executing code generator WellKnownPropertyLoadGenerator
+v41 <- CreateNamedVariable 'Symbol', 'none'
+v42 <- GetProperty v41, 'split'
+v43 <- GetComputedProperty v38, v42
+// Code generator finished
+// Executing code generator DestructObjectAndReassignGenerator
+{c:v43,f:v39,} <- DestructObjectAndReassign v40
+// Code generator finished
+// Executing code generator EvalGenerator
+v44 <- BeginCodeString
+    // Executing code generator BinaryOperationGenerator
+    v45 <- BinaryOperation v17, '/', v38
+    // Code generator finished
+    // Executing code generator UpdateGenerator
+    Update v45, '**', v45
+    // Code generator finished
+    // Executing code generator WellKnownPropertyStoreGenerator
+    v46 <- CreateNamedVariable 'Symbol', 'none'
+    v47 <- GetProperty v46, 'hasInstance'
+    SetComputedProperty v42, v47, v47
+    // Code generator finished
+EndCodeString
+v48 <- CreateNamedVariable 'eval', 'none'
+v49 <- CallFunction v48, [v44]
+// Program may be interesting due to new coverage: 44 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 2EB274B8-9934-4678-811F-F64FF6DE8B71 ] =====
+// Minimizing AA8DB5FA-94F8-4F8B-A40F-8C76B3EC2C13
+v0 <- BeginClassDefinition
+EndClassDefinition
+v1 <- LoadInteger '-4096'
+v2 <- BeginClassDefinition v0
+EndClassDefinition
+v3 <- CreateNamedVariable 'Symbol', 'none'
+v4 <- GetProperty v3, 'split'
+v5 <- GetComputedProperty v2, v4
+v6 <- BeginCodeString
+    v7 <- BinaryOperation v1, '/', v2
+    Update v7, '**', v7
+    SetComputedProperty v4, v3, v3
+EndCodeString
+v8 <- CreateNamedVariable 'eval', 'none'
+v9 <- CallFunction v8, [v6]
+// Program is interesting due to new coverage: 34 newly discovered edges in the CFG of the target
+
+

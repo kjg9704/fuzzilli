@@ -1,0 +1,52 @@
+// ===== [ Program 9EB234D5-3DB9-4D8A-8533-302535E4984E ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator IntegerGenerator
+v0 <- LoadInteger '6'
+v1 <- LoadInteger '-36614'
+v2 <- LoadInteger '6'
+// Code generator finished
+// Executing code generator IntArrayGenerator
+v3 <- CreateIntArray [1391, 268435439, 128, 268435439, 58459]
+v4 <- CreateIntArray [-2147483647, 4294967296, -1125914958, -4096, -7, 25250, 4096, -37740, 5]
+v5 <- CreateIntArray [-12]
+// Code generator finished
+// Executing code generator FloatArrayGenerator
+v6 <- CreateFloatArray [-6.439994516779455, 1.0446845707999763, 5.937529937727158]
+v7 <- CreateFloatArray [1.5828179272043918e+308, 4.0, -902785.3470618095, -1000000.0, 8.845252837148238e+307, 19951.15867305093, 5.0, 7.753944775104878e+307]
+v8 <- CreateFloatArray [-4.0, 1000.0, 1.7976931348623157e+308]
+// Code generator finished
+// Executing code generator IntArrayGenerator
+v9 <- CreateIntArray [1000, -55720, 512, -2147483649, 1234793876, -3, -949758508, 1, 536870889]
+v10 <- CreateIntArray [4294967296, -4294967297]
+v11 <- CreateIntArray [4294967296, -60628, 1073741824]
+// Code generator finished
+// End of prefix code. 12 variables are now visible
+// Executing code generator NumberComputationGenerator
+v12 <- CreateNamedVariable 'Math', 'none'
+v13 <- LoadInteger '-1024'
+v14 <- LoadInteger '-796921330'
+v15 <- LoadFloat '958434.0030253592'
+v16 <- UnaryOperation '-', v8
+v17 <- CallMethod v12, 'exp', [v15]
+v18 <- UnaryOperation '-', v7
+v19 <- BinaryOperation v18, '>>', v15
+v20 <- CallMethod v12, 'log', [v15]
+v21 <- BinaryOperation v13, '||', v16
+// Program may be interesting due to new coverage: 210 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program A7924A29-25B5-4216-A81A-447E57CC38A0 ] =====
+// Minimizing 9EB234D5-3DB9-4D8A-8533-302535E4984E
+v0 <- CreateFloatArray [1.5828179272043918e+308, 4.0, -902785.3470618095, -1000000.0, 8.845252837148238e+307, 19951.15867305093, 5.0, 7.753944775104878e+307]
+v1 <- CreateFloatArray [-4.0, 1000.0, 1.7976931348623157e+308]
+v2 <- CreateNamedVariable 'Math', 'none'
+v3 <- LoadFloat '958434.0030253592'
+v4 <- UnaryOperation '-', v1
+v5 <- CallMethod v2, 'exp', [v3]
+v6 <- UnaryOperation '-', v0
+v7 <- BinaryOperation v6, '>>', v3
+v8 <- CallMethod v2, 'log', [v3]
+// Program is interesting due to new coverage: 124 newly discovered edges in the CFG of the target
+
+

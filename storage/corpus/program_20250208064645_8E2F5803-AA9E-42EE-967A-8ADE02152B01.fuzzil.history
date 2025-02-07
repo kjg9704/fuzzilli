@@ -1,0 +1,62 @@
+// ===== [ Program 131212F3-4037-449D-BDD2-9C3CDDAC1D16 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator IntegerGenerator
+v0 <- LoadInteger '536870888'
+v1 <- LoadInteger '2147483647'
+v2 <- LoadInteger '-23696'
+// Code generator finished
+// Executing code generator TypedArrayGenerator
+v3 <- LoadInteger '3'
+v4 <- CreateNamedVariable 'BigInt64Array', 'none'
+v5 <- Construct v4, [v3]
+v6 <- LoadInteger '127'
+v7 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v8 <- Construct v7, [v6]
+v9 <- LoadInteger '64'
+v10 <- CreateNamedVariable 'Uint8Array', 'none'
+v11 <- Construct v10, [v9]
+// Code generator finished
+// Executing code generator FloatArrayGenerator
+v12 <- CreateFloatArray [-1000000000000.0]
+v13 <- CreateFloatArray [nan, 2.0, nan, 0.9795818960998801, 2.220446049250313e-16, 4.0, 0.0]
+v14 <- CreateFloatArray [-2.7629137379852313, 0.5350155291449148, 2.2250738585072014e-308, -1000000.0, 0.7883988340622813, -1.7976931348623157e+308]
+// Code generator finished
+// End of prefix code. 15 variables are now visible
+// Executing code generator LengthChangeGenerator
+v15 <- LoadInteger '2'
+SetProperty v14, 'length', v15
+// Code generator finished
+// Executing code generator SimpleForLoopGenerator
+BeginForLoopInitializer
+    v16 <- LoadInteger '0'
+BeginForLoopCondition -> v17
+    v18 <- LoadInteger '10'
+    v19 <- Compare v17, '<', v18
+BeginForLoopAfterthought v19 -> v20
+    v21 <- UnaryOperation v20, '++'
+BeginForLoopBody -> v22
+    // Executing code generator ProxyGenerator
+    BeginObjectLiteral
+    v23 <- EndObjectLiteral
+    v24 <- CreateNamedVariable 'Proxy', 'none'
+    v25 <- Construct v24, [v14, v23]
+    // Code generator finished
+EndForLoop
+// Program may be interesting due to new coverage: 124 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 8E2F5803-AA9E-42EE-967A-8ADE02152B01 ] =====
+// Minimizing 131212F3-4037-449D-BDD2-9C3CDDAC1D16
+v0 <- CreateFloatArray [-2.7629137379852313, 0.5350155291449148, 2.2250738585072014e-308, -1000000.0, 0.7883988340622813, -1.7976931348623157e+308]
+v1 <- LoadInteger '2'
+SetProperty v0, 'length', v1
+BeginRepeatLoop '5' -> v2
+    BeginObjectLiteral
+    v3 <- EndObjectLiteral
+    v4 <- CreateNamedVariable 'Proxy', 'none'
+    v5 <- Construct v4, [v0, v3]
+EndRepeatLoop
+// Program is interesting due to new coverage: 16 newly discovered edges in the CFG of the target
+
+

@@ -1,0 +1,74 @@
+// ===== [ Program F7CBCE69-77BE-40C5-887B-6EED8C087965 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator IntArrayGenerator
+v0 <- CreateIntArray [1073741824, 65537, 129, 50868, 180511092]
+v1 <- CreateIntArray [-2147483647, -65535, -15]
+v2 <- CreateIntArray [8, 8, 3]
+// Code generator finished
+// Executing code generator StringGenerator
+v3 <- LoadString '-65536'
+v4 <- LoadString 'F'
+v5 <- LoadString '65537'
+// Code generator finished
+// Executing code generator BuiltinObjectInstanceGenerator
+v6 <- CreateNamedVariable 'Set', 'none'
+v7 <- Construct v6, []
+// Code generator finished
+// Executing code generator StringGenerator
+v8 <- LoadString 'symbol'
+v9 <- LoadString '12'
+v10 <- LoadString 'nsQ4'
+// Code generator finished
+// Executing code generator FloatArrayGenerator
+v11 <- CreateFloatArray [-5.0, -685.2989390725705, -643.346253147054, 2.2250738585072014e-308, -981112.5027142635, 926181.826792116, 0.5993920346197467, -9.611097308334692, 1000000000.0, -inf]
+v12 <- CreateFloatArray [8.982278609133083, -1e-15, -1.0, -9.028495196792687e+307, 1000000000000.0]
+v13 <- CreateFloatArray [5.0, -2.2250738585072014e-308, 0.36669965748186584]
+// Code generator finished
+// End of prefix code. 14 variables are now visible
+// Executing code generator EvalGenerator
+v14 <- BeginCodeString
+    // Executing code generator FunctionCallGenerator
+    v15 <- CallFunction (guarded) v14, [v1, v9, v14]
+    // Code generator finished
+    // Executing code generator ApiConstructorCallGenerator
+    BeginTry
+        v16 <- Construct v6, [v1]
+    BeginCatch -> v17
+    EndTryCatch
+    // Code generator finished
+EndCodeString
+v18 <- CreateNamedVariable 'eval', 'none'
+v19 <- CallFunction v18, [v14]
+// Code generator finished
+// Executing code generator ReassignmentGenerator
+Reassign v2, v12
+// Program may be interesting due to new coverage: 939 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program E2AC81F7-6F2E-4BC5-ABA7-EF0BED9D64A2 ] =====
+// Minimizing F7CBCE69-77BE-40C5-887B-6EED8C087965
+v0 <- CreateIntArray [1073741824, 65537, 129, 50868, 180511092]
+v1 <- CreateIntArray [-2147483647, -65535, -15]
+v2 <- CreateIntArray [8, 8, 3]
+v3 <- CreateNamedVariable 'Set', 'none'
+v4 <- Construct v3, []
+v5 <- LoadString 'symbol'
+v6 <- LoadString '12'
+v7 <- LoadString 'nsQ4'
+v8 <- CreateFloatArray [-5.0, -685.2989390725705, -643.346253147054, 2.2250738585072014e-308, -981112.5027142635, 926181.826792116, 0.5993920346197467, -9.611097308334692, 1000000000.0, -inf]
+v9 <- CreateFloatArray [8.982278609133083, -1e-15, -1.0, -9.028495196792687e+307, 1000000000000.0]
+v10 <- CreateFloatArray [5.0, -2.2250738585072014e-308, 0.36669965748186584]
+v11 <- BeginCodeString
+    v12 <- CallFunction (guarded) v11, [v1, v6, v11]
+    BeginTry
+        v13 <- Construct v3, [v1]
+    BeginCatch -> v14
+    EndTryCatch
+EndCodeString
+v15 <- CreateNamedVariable 'eval', 'none'
+v16 <- CallFunction v15, [v11]
+Reassign v2, v9
+// Program is interesting due to new coverage: 914 newly discovered edges in the CFG of the target
+
+

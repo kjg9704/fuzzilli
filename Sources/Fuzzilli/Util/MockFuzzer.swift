@@ -193,7 +193,7 @@ public func makeMockFuzzer(config maybeConfiguration: Configuration? = nil, engi
     // Corpus managing interesting programs that have been found during fuzzing.
     let corpus = maybeCorpus ?? BasicCorpus(minSize: 1000, maxSize: 2000, minMutationsPerSample: 5)
 
-    let poc = PoC(minSize: 10, maxSize: 100)  // ✅ PoC 저장소 추가
+    let poc = PoC(minSize: 10, maxSize: 100)
 
     // Minimizer to minimize crashes and interesting programs.
     let minimizer = Minimizer()

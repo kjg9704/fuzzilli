@@ -1,0 +1,137 @@
+// ===== [ Program D532E3E3-9FD9-454E-A99B-15056EDA1FD3 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator ArrayGenerator
+v0 <- CreateArray []
+// Code generator finished
+// Executing code generator ObjectBuilderFunctionGenerator
+v1 <- BeginPlainFunction -> 
+    BeginObjectLiteral
+        // Executing code generator ObjectLiteralElementGenerator
+        ObjectLiteralAddElement `8`, v0
+        // Code generator finished
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `b`, v0
+        // Code generator finished
+        // Executing code generator ObjectLiteralElementGenerator
+        ObjectLiteralAddElement `2527`, v0
+        // Code generator finished
+        // Executing code generator ObjectLiteralCopyPropertiesGenerator
+        ObjectLiteralCopyProperties v0
+        // Code generator finished
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `e`, v0
+        // Code generator finished
+        // Executing code generator ObjectLiteralComputedMethodGenerator
+        BeginObjectLiteralComputedMethod v0 -> v2
+            // Executing code generator CallbackPropertyGenerator
+            SetProperty v0, 'toString', v2
+            // Code generator finished
+            // Executing code generator ApiConstructorCallGenerator
+            // Executing code generator CallbackPropertyGenerator
+            SetProperty v2, 'toString', v0
+            // Code generator finished
+            Return v2
+        EndObjectLiteralComputedMethod
+        // Code generator finished
+        // Executing code generator ObjectLiteralPrototypeGenerator
+        ObjectLiteralSetPrototype v0
+        // Code generator finished
+    v3 <- EndObjectLiteral
+    Return v3
+EndPlainFunction
+v4 <- CallFunction v1, []
+v5 <- CallFunction v1, []
+v6 <- CallFunction v1, []
+// Code generator finished
+// Executing code generator TrivialFunctionGenerator
+v7 <- BeginPlainFunction -> 
+    Return v6
+EndPlainFunction
+// Code generator finished
+// Executing code generator FloatArrayGenerator
+v8 <- CreateFloatArray [993.7100422939538, 0.4237462802386712, 8.316099848493299e+307, 0.6578259844223903]
+v9 <- CreateFloatArray [9.983832940800788e+307]
+v10 <- CreateFloatArray [-8.361127622776438, 689177.4442558207, -382.8169976032059, -5.0]
+// Code generator finished
+// Executing code generator TypedArrayGenerator
+v11 <- LoadInteger '3'
+v12 <- CreateNamedVariable 'Int32Array', 'none'
+v13 <- Construct v12, [v11]
+v14 <- LoadInteger '2341'
+v15 <- CreateNamedVariable 'Uint16Array', 'none'
+v16 <- Construct v15, [v14]
+v17 <- LoadInteger '170'
+v18 <- CreateNamedVariable 'Uint32Array', 'none'
+v19 <- Construct v18, [v17]
+// Code generator finished
+// End of prefix code. 18 variables are now visible
+// Executing code generator DestructArrayGenerator
+[...v20] <- DestructArray v19
+// Code generator finished
+// Executing code generator ComputedPropertyRetrievalGenerator
+v21 <- GetComputedProperty v16, v5
+// Code generator finished
+// Executing code generator FloatArrayGenerator
+v22 <- CreateFloatArray [1.229936776617993e+308, 0.9626379068188319, 3.0]
+v23 <- CreateFloatArray [0.3216803426050202, -1000000.0]
+v24 <- CreateFloatArray [470.16553215306726, -1e-15, 0.8795422213175946, 0.2346050800624343, -5.322457539434974e+307, 1.0, 1.3526793995775674e+308]
+// Code generator finished
+// Executing code generator IntegerGenerator
+v25 <- LoadInteger '155317032'
+v26 <- LoadInteger '9007199254740992'
+v27 <- LoadInteger '268435440'
+// Code generator finished
+// Executing code generator MethodCallGenerator
+v28 <- CallMethod (guarded) v24, 'toReversed', []
+// Code generator finished
+// Executing code generator TypedArrayGenerator
+v29 <- LoadInteger '4'
+v30 <- CreateNamedVariable 'Int8Array', 'none'
+v31 <- Construct v30, [v29]
+v32 <- LoadInteger '3285'
+v33 <- CreateNamedVariable 'Int8Array', 'none'
+v34 <- Construct v33, [v32]
+v35 <- LoadInteger '209'
+v36 <- CreateNamedVariable 'BigInt64Array', 'none'
+v37 <- Construct v36, [v35]
+// Program may be interesting due to new coverage: 757 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 3E596423-33D9-4185-9A63-E82D7EE7F12D ] =====
+// Minimizing D532E3E3-9FD9-454E-A99B-15056EDA1FD3
+v0 <- CreateArray []
+v1 <- BeginPlainFunction -> 
+    BeginObjectLiteral
+        ObjectLiteralAddElement `2527`, v0
+        ObjectLiteralSetPrototype v0
+    v2 <- EndObjectLiteral
+    Return v2
+EndPlainFunction
+v3 <- CallFunction v1, []
+v4 <- CallFunction v1, []
+v5 <- CallFunction v1, []
+v6 <- BeginPlainFunction -> 
+    Return v5
+EndPlainFunction
+v7 <- LoadInteger '3'
+v8 <- CreateNamedVariable 'Int32Array', 'none'
+v9 <- Construct v8, [v7]
+v10 <- LoadInteger '2341'
+v11 <- CreateNamedVariable 'Uint16Array', 'none'
+v12 <- Construct v11, []
+v13 <- LoadInteger '170'
+v14 <- CreateNamedVariable 'Uint32Array', 'none'
+v15 <- Construct v14, [v13]
+[...v16] <- DestructArray v15
+v17 <- GetComputedProperty v12, v4
+v18 <- CreateFloatArray [470.16553215306726, -1e-15, 0.8795422213175946, 0.2346050800624343, -5.322457539434974e+307, 1.0, 1.3526793995775674e+308]
+v19 <- CallMethod (guarded) v18, 'toReversed', []
+v20 <- LoadInteger '4'
+v21 <- CreateNamedVariable 'Int8Array', 'none'
+v22 <- Construct v21, [v20]
+v23 <- LoadInteger '3285'
+v24 <- Construct v21, [v23]
+// Program is interesting due to new coverage: 595 newly discovered edges in the CFG of the target
+
+

@@ -1,0 +1,100 @@
+// ===== [ Program C5FD3F0E-79F7-46B1-B8C4-99B616CCE25F ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator TypedArrayGenerator
+v0 <- LoadInteger '4'
+v1 <- CreateNamedVariable 'Uint8Array', 'none'
+v2 <- Construct v1, [v0]
+v3 <- LoadInteger '2'
+v4 <- CreateNamedVariable 'Uint32Array', 'none'
+v5 <- Construct v4, [v3]
+v6 <- LoadInteger '9'
+v7 <- CreateNamedVariable 'Uint8Array', 'none'
+v8 <- Construct v7, [v6]
+// Code generator finished
+// Executing code generator TypedArrayGenerator
+v9 <- LoadInteger '1545'
+v10 <- CreateNamedVariable 'Int8Array', 'none'
+v11 <- Construct v10, [v9]
+v12 <- LoadInteger '257'
+v13 <- CreateNamedVariable 'Float64Array', 'none'
+v14 <- Construct v13, [v12]
+v15 <- LoadInteger '64'
+v16 <- CreateNamedVariable 'Int32Array', 'none'
+v17 <- Construct v16, [v15]
+// Code generator finished
+// End of prefix code. 18 variables are now visible
+// Executing code generator ComputedPropertyUpdateGenerator
+UpdateComputedProperty v17, v5, '<<',v3
+// Code generator finished
+// Executing code generator ComputedPropertyRetrievalGenerator
+v18 <- GetComputedProperty v14, v4
+// Code generator finished
+// Executing code generator BuiltinObjectInstanceGenerator
+v19 <- CreateNamedVariable 'WeakMap', 'none'
+v20 <- Construct v19, []
+// Code generator finished
+// Executing code generator CompareWithIfElseGenerator
+v21 <- Compare v13, '>', v8
+BeginIf v21
+    // Executing code generator GrowableSharedArrayBufferGenerator
+    v22 <- CreateNamedVariable 'SharedArrayBuffer', 'none'
+    v23 <- LoadInteger '3064'
+    BeginObjectLiteral
+        ObjectLiteralAddProperty `maxByteLength`, v23
+    v24 <- EndObjectLiteral
+    v25 <- LoadInteger '87'
+    v26 <- Construct v22, [v25, v24]
+    v27 <- CreateNamedVariable 'Uint32Array', 'none'
+    v28 <- Construct v27, [v26]
+    // Code generator finished
+BeginElse
+    // Executing code generator PropertyUpdateGenerator
+    UpdateProperty v5, '+', v6
+    // Code generator finished
+    // Executing code generator ElementUpdateGenerator
+    UpdateElement v17, '536870912', '|', v0
+    // Code generator finished
+EndIf
+// Program may be interesting due to new coverage: 1268 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 0FE3EB98-6C6D-42B2-BB76-95C622728B41 ] =====
+// Minimizing C5FD3F0E-79F7-46B1-B8C4-99B616CCE25F
+v0 <- LoadInteger '4'
+v1 <- LoadInteger '2'
+v2 <- CreateNamedVariable 'Uint32Array', 'none'
+v3 <- Construct v2, [v1]
+v4 <- LoadInteger '9'
+v5 <- CreateNamedVariable 'Uint8Array', 'none'
+v6 <- Construct v5, [v4]
+v7 <- LoadInteger '1545'
+v8 <- CreateNamedVariable 'Int8Array', 'none'
+v9 <- Construct v8, [v7]
+v10 <- LoadInteger '257'
+v11 <- CreateNamedVariable 'Float64Array', 'none'
+v12 <- Construct v11, [v10]
+v13 <- LoadInteger '64'
+v14 <- CreateNamedVariable 'Int32Array', 'none'
+v15 <- Construct v14, [v13]
+UpdateComputedProperty v15, v3, '<<',v1
+v16 <- GetComputedProperty v12, v2
+v17 <- CreateNamedVariable 'WeakMap', 'none'
+v18 <- Construct v17, []
+v19 <- Compare v11, '>', v6
+BeginIf v19
+    v20 <- CreateNamedVariable 'SharedArrayBuffer', 'none'
+    v21 <- LoadInteger '3064'
+    BeginObjectLiteral
+        ObjectLiteralAddProperty `maxByteLength`, v21
+    v22 <- EndObjectLiteral
+    v23 <- LoadInteger '87'
+    v24 <- Construct v20, [v23, v22]
+    v25 <- Construct v2, [v24]
+BeginElse
+    UpdateProperty v3, '+', v4
+    UpdateElement v15, '536870912', '|', v0
+EndIf
+// Program is interesting due to new coverage: 1187 newly discovered edges in the CFG of the target
+
+

@@ -1,0 +1,75 @@
+// ===== [ Program F16D642B-F6E1-435C-99A4-F291EAEBDBCE ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator TypedArrayGenerator
+v0 <- LoadInteger '3557'
+v1 <- CreateNamedVariable 'Int16Array', 'none'
+v2 <- Construct v1, [v0]
+v3 <- LoadInteger '16'
+v4 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v5 <- Construct v4, [v3]
+v6 <- LoadInteger '1225'
+v7 <- CreateNamedVariable 'BigInt64Array', 'none'
+v8 <- Construct v7, [v6]
+// Code generator finished
+// Executing code generator StringGenerator
+v9 <- LoadString 'all'
+v10 <- LoadString 'setMilliseconds'
+v11 <- LoadString 'e'
+// Code generator finished
+// Executing code generator IntegerGenerator
+v12 <- LoadInteger '65536'
+v13 <- LoadInteger '-57759'
+v14 <- LoadInteger '536870888'
+// Code generator finished
+// End of prefix code. 15 variables are now visible
+// Executing code generator ObjectLiteralGenerator
+BeginObjectLiteral
+    // Executing code generator ObjectLiteralPropertyGenerator
+    ObjectLiteralAddProperty `h`, v0
+    // Code generator finished
+    // Executing code generator ObjectLiteralComputedPropertyGenerator
+    ObjectLiteralAddComputedProperty v14, v5
+    // Code generator finished
+    // Executing code generator ObjectLiteralComputedPropertyGenerator
+    ObjectLiteralAddComputedProperty v9, v5
+    // Code generator finished
+    // Executing code generator ObjectLiteralElementGenerator
+    ObjectLiteralAddElement `241`, v10
+    // Code generator finished
+v15 <- EndObjectLiteral
+// Code generator finished
+// Executing code generator ProxyGenerator
+BeginObjectLiteral
+v16 <- EndObjectLiteral
+v17 <- CreateNamedVariable 'Proxy', 'none'
+v18 <- Construct v17, [v2, v16]
+// Program may be interesting due to new coverage: 34 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 82E6BE22-9F3E-4E3B-BB62-8A2B03845F2A ] =====
+// Minimizing F16D642B-F6E1-435C-99A4-F291EAEBDBCE
+v0 <- LoadInteger '3557'
+v1 <- CreateNamedVariable 'Int16Array', 'none'
+v2 <- Construct v1, [v0]
+v3 <- LoadInteger '16'
+v4 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v5 <- LoadInteger '1225'
+v6 <- CreateNamedVariable 'BigInt64Array', 'none'
+v7 <- Construct v6, [v5]
+v8 <- LoadString 'all'
+v9 <- LoadString 'setMilliseconds'
+v10 <- LoadString 'e'
+v11 <- LoadInteger '65536'
+v12 <- LoadInteger '-57759'
+BeginObjectLiteral
+    ObjectLiteralAddComputedProperty v8, v3
+    ObjectLiteralAddElement `241`, v9
+v13 <- EndObjectLiteral
+BeginObjectLiteral
+v14 <- EndObjectLiteral
+v15 <- CreateNamedVariable 'Proxy', 'none'
+v16 <- Construct v15, [v2, v14]
+// Program is interesting due to new coverage: 12 newly discovered edges in the CFG of the target
+
+

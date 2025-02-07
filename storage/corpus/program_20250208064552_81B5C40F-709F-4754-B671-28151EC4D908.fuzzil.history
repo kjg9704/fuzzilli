@@ -1,0 +1,58 @@
+// ===== [ Program 9A2B6E5F-30F2-4B05-89E3-233E19B12A35 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator StringGenerator
+v0 <- LoadString 'p'
+v1 <- LoadString '-1960512466'
+v2 <- LoadString 'symbol'
+// Code generator finished
+// Executing code generator IntegerGenerator
+v3 <- LoadInteger '2147483649'
+v4 <- LoadInteger '-28755'
+v5 <- LoadInteger '5694'
+// Code generator finished
+// Executing code generator BigIntGenerator
+v6 <- LoadBigInt '4'
+v7 <- LoadBigInt '4294967295'
+v8 <- LoadBigInt '-15'
+// Code generator finished
+// Executing code generator IntegerGenerator
+v9 <- LoadInteger '-16420'
+v10 <- LoadInteger '-64293'
+v11 <- LoadInteger '0'
+// Code generator finished
+// End of prefix code. 12 variables are now visible
+// Executing code generator FloatGenerator
+v12 <- LoadFloat '0.0'
+v13 <- LoadFloat '-828.3205138526548'
+v14 <- LoadFloat '2.0'
+// Code generator finished
+// Executing code generator BigIntGenerator
+v15 <- LoadBigInt '4294967297'
+v16 <- LoadBigInt '1'
+v17 <- LoadBigInt '8'
+// Code generator finished
+// Executing code generator TypedArrayGenerator
+v18 <- LoadInteger '5'
+v19 <- CreateNamedVariable 'Uint32Array', 'none'
+v20 <- Construct v19, [v18]
+v21 <- LoadInteger '67'
+v22 <- CreateNamedVariable 'BigInt64Array', 'none'
+v23 <- Construct v22, [v21]
+v24 <- LoadInteger '1024'
+v25 <- CreateNamedVariable 'Uint16Array', 'none'
+v26 <- Construct v25, [v24]
+// Program may be interesting due to new coverage: 120 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 81B5C40F-709F-4754-B671-28151EC4D908 ] =====
+// Minimizing 9A2B6E5F-30F2-4B05-89E3-233E19B12A35
+v0 <- LoadInteger '67'
+v1 <- CreateNamedVariable 'BigInt64Array', 'none'
+v2 <- Construct v1, [v0]
+v3 <- LoadInteger '1024'
+v4 <- CreateNamedVariable 'Uint16Array', 'none'
+v5 <- Construct v4, [v3]
+// Program is interesting due to new coverage: 56 newly discovered edges in the CFG of the target
+
+

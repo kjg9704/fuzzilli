@@ -1,0 +1,140 @@
+// ===== [ Program E14F8200-C030-4F54-AF01-1CBA58BF1EAF ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator IntegerGenerator
+v0 <- LoadInteger '-268435456'
+v1 <- LoadInteger '-12'
+v2 <- LoadInteger '-4'
+// Code generator finished
+// Executing code generator StringGenerator
+v3 <- LoadString 'p'
+v4 <- LoadString 'g'
+v5 <- LoadString '-11814'
+// Code generator finished
+// Executing code generator IntegerGenerator
+v6 <- LoadInteger '255'
+v7 <- LoadInteger '-65536'
+v8 <- LoadInteger '-256'
+// Code generator finished
+// Executing code generator StringGenerator
+v9 <- LoadString '37920'
+v10 <- LoadString 'function'
+v11 <- LoadString 'isSealed'
+// Code generator finished
+// Executing code generator ObjectBuilderFunctionGenerator
+v12 <- BeginPlainFunction -> v13, v14, v15, v16
+    BeginObjectLiteral
+        // Executing code generator ObjectLiteralElementGenerator
+        ObjectLiteralAddElement `142`, v3
+        // Code generator finished
+        // Executing code generator ObjectLiteralPrototypeGenerator
+        ObjectLiteralSetPrototype v11
+        // Code generator finished
+        // Executing code generator ObjectLiteralGetterGenerator
+        BeginObjectLiteralGetter `f` -> v17
+            // Executing code generator SuperPropertyRetrievalGenerator
+            v18 <- GetSuperProperty 'g'
+            // Code generator finished
+            // Executing code generator DestructObjectGenerator
+            {length:v19,} <- DestructObject v13
+            // Code generator finished
+            // Executing code generator FloatGenerator
+            v20 <- LoadFloat '-0.0'
+            v21 <- LoadFloat '0.7683301624277838'
+            v22 <- LoadFloat '9.167412882895263'
+            // Code generator finished
+            Return v20
+        EndObjectLiteralGetter
+        // Code generator finished
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `f`, v9
+        // Code generator finished
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `g`, v11
+        // Code generator finished
+        // Executing code generator ObjectLiteralComputedPropertyGenerator
+        ObjectLiteralAddComputedProperty v2, v11
+        // Code generator finished
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `h`, v15
+        // Code generator finished
+        // Executing code generator ObjectLiteralPrototypeGenerator
+        // Code generator finished
+        // Executing code generator ObjectLiteralElementGenerator
+        ObjectLiteralAddElement `-2`, v5
+        // Code generator finished
+    v23 <- EndObjectLiteral
+    Return v23
+EndPlainFunction
+v24 <- CallFunction v12, [v4, v2, v5, v0]
+v25 <- CallFunction v12, [v3, v2, v3, v24]
+v26 <- CallFunction v12, [v3, v2, v4, v25]
+// Code generator finished
+// End of prefix code. 16 variables are now visible
+// Executing code generator WellKnownPropertyStoreGenerator
+v27 <- CreateNamedVariable 'Symbol', 'none'
+v28 <- GetProperty v27, 'unscopables'
+SetComputedProperty v26, v28, v12
+// Code generator finished
+// Executing code generator CallbackPropertyGenerator
+SetProperty v28, 'toString', v12
+// Code generator finished
+// Executing code generator ForceSpidermonkeyIonGenerator
+BeginRepeatLoop '100' -> v29
+    v30 <- CallFunction v12, [v11, v8, v10, v25]
+EndRepeatLoop
+// Code generator finished
+// Executing code generator FunctionCallGenerator
+v31 <- CallFunction v12, [v11, v0, v9, v28]
+// Code generator finished
+// Executing code generator ComputedPropertyAssignmentGenerator
+SetComputedProperty v26, v3, v26
+// Code generator finished
+// Executing code generator CallbackPropertyGenerator
+SetProperty v5, 'toString', v12
+// Program may be interesting due to new coverage: 3635 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 64501A98-558A-4F08-9CE2-8FAF2FF29F47 ] =====
+// Minimizing E14F8200-C030-4F54-AF01-1CBA58BF1EAF
+v0 <- LoadInteger '-268435456'
+v1 <- LoadInteger '-4'
+v2 <- LoadString 'p'
+v3 <- LoadString 'g'
+v4 <- LoadString '-11814'
+v5 <- LoadInteger '-256'
+v6 <- LoadString '37920'
+v7 <- LoadString 'function'
+v8 <- LoadString 'isSealed'
+v9 <- BeginPlainFunction -> v10, v11, v12, v13
+    BeginObjectLiteral
+        ObjectLiteralAddElement `142`, v2
+        ObjectLiteralSetPrototype v8
+        BeginObjectLiteralGetter `f` -> v14
+            v15 <- GetSuperProperty 'g'
+            v16 <- GetProperty v10, 'length'
+        EndObjectLiteralGetter
+        ObjectLiteralAddProperty `f`, v6
+        ObjectLiteralAddProperty `g`, v8
+        ObjectLiteralAddComputedProperty v1, v8
+        ObjectLiteralAddProperty `h`, v12
+        ObjectLiteralAddElement `-2`, v4
+    v17 <- EndObjectLiteral
+    Return v17
+EndPlainFunction
+v18 <- CallFunction v9, [v3, v1, v4, v0]
+v19 <- CallFunction v9, [v2, v1, v2, v18]
+v20 <- CallFunction v9, [v2, v1, v3, v19]
+v21 <- CreateNamedVariable 'Symbol', 'none'
+v22 <- GetProperty v21, 'unscopables'
+SetComputedProperty v20, v22, v9
+SetProperty v22, 'toString', v9
+BeginRepeatLoop '100' -> v23
+    v24 <- CallFunction v9, [v8, v5, v7, v19]
+EndRepeatLoop
+v25 <- CallFunction v9, [v8, v0, v6, v22]
+SetComputedProperty v20, v2, v20
+SetProperty v4, 'toString', v9
+// Program is interesting due to new coverage: 3553 newly discovered edges in the CFG of the target
+
+

@@ -1,0 +1,86 @@
+// ===== [ Program B545D1AC-82D7-4A79-B69A-034FB04F8BC5 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator BigIntGenerator
+v0 <- LoadBigInt '-65537'
+v1 <- LoadBigInt '9223372036854775807'
+v2 <- LoadBigInt '65537'
+// Code generator finished
+// Executing code generator FloatGenerator
+v3 <- LoadFloat '1.2817201025138987e+308'
+v4 <- LoadFloat '822857.3160481532'
+v5 <- LoadFloat '1000000000000.0'
+// Code generator finished
+// Executing code generator TypedArrayGenerator
+v6 <- LoadInteger '112'
+v7 <- CreateNamedVariable 'BigUint64Array', 'none'
+v8 <- Construct v7, [v6]
+v9 <- LoadInteger '3194'
+v10 <- CreateNamedVariable 'BigUint64Array', 'none'
+v11 <- Construct v10, [v9]
+v12 <- LoadInteger '0'
+v13 <- CreateNamedVariable 'Float32Array', 'none'
+v14 <- Construct v13, [v12]
+// Code generator finished
+// End of prefix code. 15 variables are now visible
+// Executing code generator ComputedPropertyRetrievalGenerator
+v15 <- GetComputedProperty v11, v4
+// Code generator finished
+// Executing code generator ObjectHierarchyGenerator
+BeginObjectLiteral
+v16 <- EndObjectLiteral
+SetProperty v16, 'e', v6
+BeginObjectLiteral
+v17 <- EndObjectLiteral
+SetProperty v17, 'e', v6
+SetProperty v17, 'c', v8
+BeginObjectLiteral
+v18 <- EndObjectLiteral
+SetProperty v18, 'e', v6
+SetProperty v18, 'c', v8
+SetProperty v18, 'b', v1
+BeginObjectLiteral
+v19 <- EndObjectLiteral
+SetProperty v19, 'e', v6
+SetProperty v19, 'c', v8
+SetProperty v19, 'b', v14
+// Program may be interesting due to new coverage: 94 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 85F20CEB-160B-4C08-9682-2AE933BA5C2C ] =====
+// Minimizing B545D1AC-82D7-4A79-B69A-034FB04F8BC5
+v0 <- LoadBigInt '-65537'
+v1 <- LoadBigInt '9223372036854775807'
+v2 <- LoadBigInt '65537'
+v3 <- LoadFloat '1.2817201025138987e+308'
+v4 <- LoadFloat '822857.3160481532'
+v5 <- LoadFloat '1000000000000.0'
+v6 <- LoadInteger '112'
+v7 <- CreateNamedVariable 'BigUint64Array', 'none'
+v8 <- Construct v7, [v6]
+v9 <- LoadInteger '3194'
+v10 <- CreateNamedVariable 'BigUint64Array', 'none'
+v11 <- Construct v10, [v9]
+v12 <- LoadInteger '0'
+v13 <- CreateNamedVariable 'Float32Array', 'none'
+v14 <- Construct v13, [v12]
+v15 <- GetComputedProperty v11, v4
+BeginObjectLiteral
+v16 <- EndObjectLiteral
+SetProperty v16, 'e', v6
+BeginObjectLiteral
+v17 <- EndObjectLiteral
+SetProperty v17, 'e', v6
+SetProperty v17, 'c', v8
+BeginObjectLiteral
+v18 <- EndObjectLiteral
+SetProperty v18, 'e', v6
+SetProperty v18, 'c', v8
+BeginObjectLiteral
+v19 <- EndObjectLiteral
+SetProperty v19, 'e', v6
+SetProperty v19, 'c', v8
+SetProperty v19, 'b', v14
+// Program is interesting due to new coverage: 28 newly discovered edges in the CFG of the target
+
+

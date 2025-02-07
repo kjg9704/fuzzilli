@@ -1,0 +1,156 @@
+// ===== [ Program B3C01E76-AD42-462E-B2E3-C115A912B4B4 ] =====
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator ClassDefinitionGenerator
+v0 <- LoadInteger '-9007199254740991'
+v1 <- LoadInteger '60329'
+v2 <- LoadInteger '6'
+v3 <- BeginClassDefinition
+    // Executing code generator ClassConstructorGenerator
+    BeginClassConstructor -> v4, v5, v6
+        // Executing code generator ClassDefinitionGenerator
+        v7 <- BeginClassDefinition
+            // Executing code generator ClassStaticElementGenerator
+            ClassAddStaticElement '3485269511' v0
+            // Code generator finished
+        EndClassDefinition
+        v8 <- Construct v7, []
+        v9 <- Construct v7, []
+        v10 <- Construct v7, []
+        // Code generator finished
+    EndClassConstructor
+    // Code generator finished
+    // Executing code generator ClassStaticElementGenerator
+    ClassAddStaticElement '256'
+    // Code generator finished
+    // Executing code generator ClassConstructorGenerator
+    // Code generator finished
+    // Executing code generator ClassConstructorGenerator
+    // Code generator finished
+    // Executing code generator ClassPrivateInstancePropertyGenerator
+    ClassAddPrivateInstanceProperty 'b' v0
+    // Code generator finished
+    // Executing code generator ClassPrivateInstancePropertyGenerator
+    ClassAddPrivateInstanceProperty 'a' v2
+    // Code generator finished
+    // Executing code generator ClassInstancePropertyGenerator
+    ClassAddInstanceProperty 'a'
+    // Code generator finished
+    // Executing code generator ClassStaticComputedPropertyGenerator
+    ClassAddStaticComputedProperty v0 v1
+    // Code generator finished
+    // Executing code generator ClassInstancePropertyGenerator
+    ClassAddInstanceProperty 'b' v2
+    // Code generator finished
+EndClassDefinition
+v11 <- Construct v3, [v0, v2]
+v12 <- Construct v3, [v0, v2]
+v13 <- Construct v3, [v2, v0]
+// Code generator finished
+// Executing code generator TrivialFunctionGenerator
+v14 <- BeginPlainFunction -> 
+    Return v1
+EndPlainFunction
+// Code generator finished
+// Executing code generator FloatGenerator
+v15 <- LoadFloat '-4.617247169913458'
+v16 <- LoadFloat '1000000000000.0'
+v17 <- LoadFloat '484775.4670455721'
+// Code generator finished
+// Executing code generator ObjectBuilderFunctionGenerator
+v18 <- BeginPlainFunction -> v19, v20, v21, v22
+    BeginObjectLiteral
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `h`, v2
+        // Code generator finished
+        // Executing code generator ObjectLiteralElementGenerator
+        ObjectLiteralAddElement `551111464`, v17
+        // Code generator finished
+        // Executing code generator ObjectLiteralCopyPropertiesGenerator
+        ObjectLiteralCopyProperties v12
+        // Code generator finished
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `c`, v12
+        // Code generator finished
+        // Executing code generator ObjectLiteralGetterGenerator
+        BeginObjectLiteralGetter `a` -> v23
+            // Executing code generator ForInLoopGenerator
+            BeginForInLoop v12 -> v24
+                // Executing code generator ComputedPropertyAssignmentGenerator
+                SetComputedProperty v11, v24, v22
+                // Code generator finished
+                // Executing code generator IntegerGenerator
+                v25 <- LoadInteger '1073741825'
+                v26 <- LoadInteger '410171635'
+                v27 <- LoadInteger '268435441'
+                // Code generator finished
+            EndForInLoop
+            // Code generator finished
+            Return v21
+        EndObjectLiteralGetter
+        // Code generator finished
+        // Executing code generator ObjectLiteralComputedPropertyGenerator
+        ObjectLiteralAddComputedProperty v12, v22
+        // Code generator finished
+    v28 <- EndObjectLiteral
+    Return v28
+EndPlainFunction
+v29 <- CallFunction v18, [v3, v12, v0, v2]
+v30 <- CallFunction v18, [v3, v13, v0, v2]
+v31 <- CallFunction v18, [v12, v3, v2, v2]
+// Code generator finished
+// End of prefix code. 15 variables are now visible
+// Executing code generator TypedArrayGenerator
+v32 <- LoadInteger '1088'
+v33 <- CreateNamedVariable 'Float64Array', 'none'
+v34 <- Construct v33, [v32]
+v35 <- LoadInteger '5'
+v36 <- CreateNamedVariable 'Float32Array', 'none'
+v37 <- Construct v36, [v35]
+v38 <- LoadInteger '3'
+v39 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v40 <- Construct v39, [v38]
+// Code generator finished
+// Executing code generator BuiltinGenerator
+v41 <- CreateNamedVariable 'drainJobQueue', 'none'
+// Program may be interesting due to new coverage: 119 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 8F943838-BF68-4F32-B153-18601B478703 ] =====
+// Minimizing B3C01E76-AD42-462E-B2E3-C115A912B4B4
+v0 <- LoadInteger '-9007199254740991'
+v1 <- LoadInteger '6'
+v2 <- BeginClassDefinition
+    BeginClassConstructor -> v3, v4, v5
+        v6 <- BeginClassDefinition
+            ClassAddStaticElement '3485269511' v0
+        EndClassDefinition
+    EndClassConstructor
+    ClassAddInstanceProperty 'a'
+    ClassAddInstanceProperty 'b' v1
+EndClassDefinition
+v7 <- Construct v2, []
+v8 <- Construct v2, []
+v9 <- LoadFloat '484775.4670455721'
+v10 <- BeginPlainFunction -> v11, v12, v13, v14
+    BeginObjectLiteral
+        ObjectLiteralAddProperty `h`, v1
+        ObjectLiteralAddElement `551111464`, v9
+        ObjectLiteralCopyProperties v8
+        ObjectLiteralAddProperty `c`, v8
+        BeginObjectLiteralGetter `a` -> v15
+            BeginForInLoop v8 -> v16
+                SetComputedProperty v7, v16, v14
+            EndForInLoop
+            Return v15
+        EndObjectLiteralGetter
+        ObjectLiteralAddComputedProperty v8, v14
+    v17 <- EndObjectLiteral
+    Return v10
+EndPlainFunction
+v18 <- CallFunction v10, []
+v19 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v20 <- Construct v19, []
+// Program is interesting due to new coverage: 94 newly discovered edges in the CFG of the target
+
+
