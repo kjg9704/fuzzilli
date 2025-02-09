@@ -35,7 +35,7 @@ function tryReadFile(path) {
 // Parse the given JavaScript script and return an AST compatible with Fuzzilli's protobuf-based AST format.
 function parse(script, proto) {
     let ast = Parser.parse(script, { plugins: ["v8intrinsic"] });
-
+    
     function assertNoError(err) {
         if (err) throw err;
     }
@@ -73,10 +73,25 @@ function parse(script, proto) {
     }
 
     function visitParameter(param) {
+        if (param.type === 'Identifier') {
+            return make('Parameter', { name: param.name });
+        }
+    
+        if (param.type === 'AssignmentPattern') {
+            return make('Parameter', {
+                name: param.left.name ?? null,
+                defaultValue: visitExpression(param.right)
+            });
+        }
+    
+        throw `Unsupported parameter type: ${param.type}`;
+    }
+    /*
+    function visitParameter(param) {
         assert(param.type == 'Identifier', "Expected parameter type to have type 'Identifier', found " + param.type);
         return make('Parameter', { name: param.name });
     }
-
+    */
     function visitParameters(params) {
         return params.map(visitParameter)
     }

@@ -472,6 +472,104 @@ public class ProgramBuilder {
         return .parameters(params)
     }
 
+    public func randomParametersWithDefaults(n wantedNumberOfParameters: Int? = nil) -> (SubroutineDescriptor, [Variable]) {
+        assert(probabilityOfUsingAnythingAsParameterTypeIfAvoidable >= 0 && probabilityOfUsingAnythingAsParameterTypeIfAvoidable <= 1)
+
+        let n: Int
+        if let requestedN = wantedNumberOfParameters {
+            assert(requestedN > 0)
+            n = requestedN
+        } else {
+            switch numberOfVisibleVariables {
+            case 0...1:
+                n = 0
+            case 2...5:
+                n = Int.random(in: 1...2)
+            default:
+                n = Int.random(in: 2...4)
+            }
+        }
+
+        var availableVariablesByType = [ILType: Int]()
+        for v in visibleVariables {
+            let t = type(of: v)
+            availableVariablesByType[t] = (availableVariablesByType[t] ?? 0) + 1
+        }
+
+        var candidates = Array(availableVariablesByType.filter({ k, v in v >= thresholdForUseAsParameter }).keys)
+        if candidates.isEmpty {
+            candidates.append(.anything)
+        }
+
+        var params = ParameterList()
+        var defaults = [Variable]()
+
+        let numDefaultAssignments = n > 0 ? Int.random(in: 0...n) : 0
+        let defaultStartIndex = n - numDefaultAssignments  
+
+        for i in 0..<n {
+            let paramType: Parameter
+            if probability(probabilityOfUsingAnythingAsParameterTypeIfAvoidable) {
+                paramType = .anything
+            } else {
+                paramType = .plain(chooseUniform(from: candidates))
+            }
+
+            if i >= defaultStartIndex {
+                let defaultVar: Variable
+                switch paramType {
+                case .plain(.number):
+                    defaultVar = self.loadInt(Int64(randomInt()))
+                case .plain(.string):
+                    defaultVar = self.loadString(randomString())
+                case .plain(.boolean):
+                    defaultVar = self.loadBool(Bool.random())
+                case .plain(.object()):
+                    defaultVar = self.construct(self.createNamedVariable(forBuiltin: "Object"))
+                case .plain(.function()):
+                    defaultVar = self.callFunction(self.createNamedVariable(forBuiltin: "someFunction"), withArgs: [])
+                default:
+                    defaultVar = self.loadUndefined()
+                }
+
+                params.append(paramType)
+                defaults.append(defaultVar)
+            } else {
+                params.append(paramType)
+            }
+        }
+
+        var descriptor = SubroutineDescriptor.parameters(params, numDefaultAssignments: numDefaultAssignments)
+
+        return (descriptor, defaults)
+    }
+
+    private func randomDefaultValue(for paramType: Parameter) -> Variable {
+        switch paramType {
+        case .plain(.number):
+            return self.loadInt(self.randomInt())
+        case .plain(.string):
+            return self.loadString(self.randomString())
+        case .plain(.boolean):
+            return self.loadBool(Bool.random())
+        case .plain(.object()):
+            return self.construct(self.createNamedVariable(forBuiltin: "Object"))
+        case .plain(.function()):
+            return self.callFunction(self.createNamedVariable(forBuiltin: "someFunction"), withArgs: [])
+        case .plain(.anything):
+            return chooseUniform(from: [
+                self.loadInt(self.randomInt()),
+                self.loadString(self.randomString()),
+                self.loadBool(Bool.random()),
+                self.construct(self.createNamedVariable(forBuiltin: "Object")),
+                self.callFunction(self.createNamedVariable(forBuiltin: "someFunction"), withArgs: [])
+            ])
+        default:
+            return self.loadUndefined()
+        }
+    }
+
+
     public func findOrGenerateArguments(forSignature signature: Signature, maxNumberOfVariablesToGenerate: Int = 100) -> [Variable] {
         assert(context.contains(.javascript))
 
@@ -2100,8 +2198,8 @@ public class ProgramBuilder {
             return parameters(ParameterList(params))
         }
 
-        public static func parameters(_ parameterTypes: ParameterList) -> SubroutineDescriptor {
-            let parameters = Parameters(count: parameterTypes.count, hasRestParameter: parameterTypes.hasRestParameter)
+        public static func parameters(_ parameterTypes: ParameterList, numDefaultAssignments: Int = 0) -> SubroutineDescriptor {
+            let parameters = Parameters(count: parameterTypes.count, hasRestParameter: parameterTypes.hasRestParameter, numDefaultAssignments: numDefaultAssignments)
             return SubroutineDescriptor(withParameters: parameters, ofTypes: parameterTypes)
         }
 
@@ -2131,6 +2229,28 @@ public class ProgramBuilder {
     }
 
     @discardableResult
+    public func buildPlainFunction(with descriptor: SubroutineDescriptor, withInputs defaults: [Variable], named functionName: String? = nil,_ body: ([Variable]) -> ()) -> Variable {
+        setParameterTypesForNextSubroutine(descriptor.parameterTypes)
+        let instr = emit(BeginPlainFunction(parameters: descriptor.parameters, functionName: functionName), withInputs: defaults)
+        if enableRecursionGuard { hide(instr.output) }
+        body(Array(instr.innerOutputs))
+        if enableRecursionGuard { unhide(instr.output) }
+        emit(EndPlainFunction())
+        return instr.output
+    }
+
+    @discardableResult
+    public func buildArrowFunction(with descriptor: SubroutineDescriptor, withInputs defaults: [Variable], _ body: ([Variable]) -> ()) -> Variable {
+        setParameterTypesForNextSubroutine(descriptor.parameterTypes)
+        let instr = emit(BeginArrowFunction(parameters: descriptor.parameters), withInputs: defaults)
+        if enableRecursionGuard { hide(instr.output) }
+        body(Array(instr.innerOutputs))
+        if enableRecursionGuard { unhide(instr.output) }
+        emit(EndArrowFunction())
+        return instr.output
+    }
+
+    @discardableResult
     public func buildArrowFunction(with descriptor: SubroutineDescriptor, _ body: ([Variable]) -> ()) -> Variable {
         setParameterTypesForNextSubroutine(descriptor.parameterTypes)
         let instr = emit(BeginArrowFunction(parameters: descriptor.parameters))
@@ -2153,6 +2273,16 @@ public class ProgramBuilder {
     }
 
     @discardableResult
+    public func buildGeneratorFunction(with descriptor: SubroutineDescriptor, withInputs defaults: [Variable], named functionName: String? = nil, _ body: ([Variable]) -> ()) -> Variable {
+        setParameterTypesForNextSubroutine(descriptor.parameterTypes)
+        let instr = emit(BeginGeneratorFunction(parameters: descriptor.parameters, functionName: functionName), withInputs: defaults)
+        if enableRecursionGuard { hide(instr.output) }
+        body(Array(instr.innerOutputs))
+        if enableRecursionGuard { unhide(instr.output) }
+        emit(EndGeneratorFunction())
+        return instr.output
+    }
+    @discardableResult
     public func buildAsyncFunction(with descriptor: SubroutineDescriptor, named functionName: String? = nil, _ body: ([Variable]) -> ()) -> Variable {
         setParameterTypesForNextSubroutine(descriptor.parameterTypes)
         let instr = emit(BeginAsyncFunction(parameters: descriptor.parameters, functionName: functionName))
@@ -2160,6 +2290,28 @@ public class ProgramBuilder {
         body(Array(instr.innerOutputs))
         if enableRecursionGuard { unhide(instr.output) }
         emit(EndAsyncFunction())
+        return instr.output
+    }
+
+    @discardableResult
+    public func buildAsyncFunction(with descriptor: SubroutineDescriptor, withInputs defaults: [Variable], named functionName: String? = nil, _ body: ([Variable]) -> ()) -> Variable {
+        setParameterTypesForNextSubroutine(descriptor.parameterTypes)
+        let instr = emit(BeginAsyncFunction(parameters: descriptor.parameters, functionName: functionName), withInputs: defaults)
+        if enableRecursionGuard { hide(instr.output) }
+        body(Array(instr.innerOutputs))
+        if enableRecursionGuard { unhide(instr.output) }
+        emit(EndAsyncFunction())
+        return instr.output
+    }
+
+    @discardableResult
+    public func buildAsyncArrowFunction(with descriptor: SubroutineDescriptor, withInputs defaults: [Variable], _ body: ([Variable]) -> ()) -> Variable {
+        setParameterTypesForNextSubroutine(descriptor.parameterTypes)
+        let instr = emit(BeginAsyncArrowFunction(parameters: descriptor.parameters), withInputs: defaults)
+        if enableRecursionGuard { hide(instr.output) }
+        body(Array(instr.innerOutputs))
+        if enableRecursionGuard { unhide(instr.output) }
+        emit(EndAsyncArrowFunction())
         return instr.output
     }
 
@@ -2178,6 +2330,17 @@ public class ProgramBuilder {
     public func buildAsyncGeneratorFunction(with descriptor: SubroutineDescriptor, named functionName: String? = nil, _ body: ([Variable]) -> ()) -> Variable {
         setParameterTypesForNextSubroutine(descriptor.parameterTypes)
         let instr = emit(BeginAsyncGeneratorFunction(parameters: descriptor.parameters, functionName: functionName))
+        if enableRecursionGuard { hide(instr.output) }
+        body(Array(instr.innerOutputs))
+        if enableRecursionGuard { unhide(instr.output) }
+        emit(EndAsyncGeneratorFunction())
+        return instr.output
+    }
+
+    @discardableResult
+    public func buildAsyncGeneratorFunction(with descriptor: SubroutineDescriptor, withInputs defaults: [Variable], named functionName: String? = nil, _ body: ([Variable]) -> ()) -> Variable {
+        setParameterTypesForNextSubroutine(descriptor.parameterTypes)
+        let instr = emit(BeginAsyncGeneratorFunction(parameters: descriptor.parameters, functionName: functionName), withInputs: defaults)
         if enableRecursionGuard { hide(instr.output) }
         body(Array(instr.innerOutputs))
         if enableRecursionGuard { unhide(instr.output) }

@@ -1232,14 +1232,21 @@ public struct Parameters {
     /// Whether the last parameter is a rest parameter.
     let hasRestParameter: Bool
 
+    let numDefaultAssignments: UInt32
+
     /// The total number of parameters. This is equivalent to the number of inner outputs produced from the parameters.
     var count: Int {
         return Int(numParameters)
     }
 
-    init(count: Int, hasRestParameter: Bool = false) {
+     var hasDefaultAssignments: Bool {
+        return numDefaultAssignments > 0
+    }
+
+    init(count: Int, hasRestParameter: Bool = false, numDefaultAssignments: Int = 0) {
         self.numParameters = UInt32(count)
         self.hasRestParameter = hasRestParameter
+        self.numDefaultAssignments = UInt32(numDefaultAssignments)
     }
 }
 
@@ -1269,7 +1276,7 @@ class EndAnySubroutine: JsOperation {
 class BeginAnyFunction: BeginAnySubroutine {
     init(parameters: Parameters, contextOpened: Context = [.javascript, .subroutine]) {
         super.init(parameters: parameters,
-                   numInputs: 0,
+                   numInputs: Int(parameters.numDefaultAssignments),
                    numOutputs: 1,
                    numInnerOutputs: parameters.count,
                    contextOpened: contextOpened)

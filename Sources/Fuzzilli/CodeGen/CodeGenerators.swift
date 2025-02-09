@@ -800,6 +800,16 @@ public let CodeGenerators: [CodeGenerator] = [
         b.callFunction(f, withArgs: b.randomArguments(forCalling: f))
     },
 
+    RecursiveCodeGenerator("PlainFunctionWithDefaultAssignmentGenerator") { b in
+        let (params, defaults) = b.randomParametersWithDefaults()
+
+        let f = b.buildPlainFunction(with: params, withInputs: defaults) { _ in
+            b.buildRecursive()
+            b.doReturn(b.randomVariable())
+        }
+        b.callFunction(f, withArgs: b.randomArguments(forCalling: f))
+    },
+
     RecursiveCodeGenerator("StrictModeFunctionGenerator") { b in
         // We could consider having a standalone DirectiveGenerator, but probably most of the time it won't do anything meaningful.
         // We could also consider keeping a list of known directives in the Environment, but currently we only use 'use strict'.
@@ -819,8 +829,37 @@ public let CodeGenerators: [CodeGenerator] = [
         // These are "typically" used as arguments, so we don't directly generate a call operation here.
     },
 
+    RecursiveCodeGenerator("ArrowFunctionWithDefaultAssignmentGenerator") { b in
+
+        let (params, defaults) = b.randomParametersWithDefaults()
+
+        b.buildArrowFunction(with: params, withInputs: defaults) { _ in
+            b.buildRecursive()
+            b.doReturn(b.randomVariable())
+        }
+        // These are "typically" used as arguments, so we don't directly generate a call operation here.
+    },
+
     RecursiveCodeGenerator("GeneratorFunctionGenerator") { b in
         let f = b.buildGeneratorFunction(with: b.randomParameters()) { _ in
+            b.buildRecursive()
+            if probability(0.5) {
+                b.yield(b.randomVariable())
+            } else {
+                let randomVariables = b.randomVariables(n: Int.random(in: 1...5))
+                let array = b.createArray(with: randomVariables)
+                b.yieldEach(array)
+            }
+            b.doReturn(b.randomVariable())
+        }
+        b.callFunction(f, withArgs: b.randomArguments(forCalling: f))
+    },
+
+    RecursiveCodeGenerator("GeneratorFunctionWithDefaultAssignmentGenerator") { b in
+
+        let (params, defaults) = b.randomParametersWithDefaults()
+
+        let f = b.buildGeneratorFunction(with: params, withInputs: defaults) { _ in
             b.buildRecursive()
             if probability(0.5) {
                 b.yield(b.randomVariable())
@@ -843,6 +882,18 @@ public let CodeGenerators: [CodeGenerator] = [
         b.callFunction(f, withArgs: b.randomArguments(forCalling: f))
     },
 
+    RecursiveCodeGenerator("AsyncFunctionWithDefaultAssignmentGenerator") { b in
+
+        let (params, defaults) = b.randomParametersWithDefaults()
+
+        let f = b.buildAsyncFunction(with: params, withInputs: defaults) { _ in
+            b.buildRecursive()
+            b.await(b.randomVariable())
+            b.doReturn(b.randomVariable())
+        }
+        b.callFunction(f, withArgs: b.randomArguments(forCalling: f))
+    },
+
     RecursiveCodeGenerator("AsyncArrowFunctionGenerator") { b in
         b.buildAsyncArrowFunction(with: b.randomParameters()) { _ in
             b.buildRecursive()
@@ -852,8 +903,39 @@ public let CodeGenerators: [CodeGenerator] = [
         // These are "typically" used as arguments, so we don't directly generate a call operation here.
     },
 
+    RecursiveCodeGenerator("AsyncArrowFunctionWithDefaultAssignmentGenerator") { b in
+
+        let (params, defaults) = b.randomParametersWithDefaults()
+
+        b.buildAsyncArrowFunction(with: params, withInputs: defaults) { _ in
+            b.buildRecursive()
+            b.await(b.randomVariable())
+            b.doReturn(b.randomVariable())
+        }
+        // These are "typically" used as arguments, so we don't directly generate a call operation here.
+    },
+
     RecursiveCodeGenerator("AsyncGeneratorFunctionGenerator") { b in
         let f = b.buildAsyncGeneratorFunction(with: b.randomParameters()) { _ in
+            b.buildRecursive()
+            b.await(b.randomVariable())
+            if probability(0.5) {
+                b.yield(b.randomVariable())
+            } else {
+                let randomVariables = b.randomVariables(n: Int.random(in: 1...5))
+                let array = b.createArray(with: randomVariables)
+                b.yieldEach(array)
+            }
+            b.doReturn(b.randomVariable())
+        }
+        b.callFunction(f, withArgs: b.randomArguments(forCalling: f))
+    },
+
+    RecursiveCodeGenerator("AsyncGeneratorFunctionWithDefaultAssignmentGenerator") { b in
+
+        let (params, defaults) = b.randomParametersWithDefaults()
+
+        let f = b.buildAsyncGeneratorFunction(with: params, withInputs: defaults) { _ in
             b.buildRecursive()
             b.await(b.randomVariable())
             if probability(0.5) {

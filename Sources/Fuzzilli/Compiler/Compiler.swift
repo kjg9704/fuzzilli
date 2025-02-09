@@ -133,7 +133,16 @@ public class JavaScriptCompiler {
                 throw CompilerError.invalidNodeError("invalid function declaration type \(type)")
             }
 
-            let instr = emit(functionBegin)
+            var defaultValues: [Variable] = []
+
+            for param in functionDeclaration.parameters {
+                if param.hasDefaultValue {
+                    let defaultVar = try compileExpression(param.defaultValue)
+                    defaultValues.append(defaultVar) 
+                }
+            }
+
+            let instr = emit(functionBegin, withInputs: defaultValues)
             // The function may have been accessed before it was defined due to function hoisting, so
             // here we may overwrite an existing variable mapping.
             mapOrRemap(functionDeclaration.name, to: instr.output)
@@ -913,7 +922,18 @@ public class JavaScriptCompiler {
                 throw CompilerError.invalidNodeError("invalid arrow function type \(arrowFunction.type)")
             }
 
-            let instr = emit(functionBegin)
+            var defaultValues: [Variable] = []
+
+            for param in arrowFunction.parameters {
+                if param.hasDefaultValue {
+                    let defaultVar = try compileExpression(param.defaultValue)
+                    defaultValues.append(defaultVar) 
+                }
+            }
+
+            // instr을 emit할 때 기본값을 withInputs에 추가
+            let instr = emit(functionBegin, withInputs: defaultValues)
+
             try enterNewScope {
                 mapParameters(arrowFunction.parameters, to: instr.innerOutputs)
                 guard let body = arrowFunction.body else { throw CompilerError.invalidNodeError("missing body in arrow function") }
@@ -1193,9 +1213,15 @@ public class JavaScriptCompiler {
     }
 
     private func convertParameters(_ parameters: [Compiler_Protobuf_Parameter]) -> Parameters {
-        return Parameters(count: parameters.count)
+        let defaultCount = parameters.filter { $0.hasDefaultValue }.count
+        return Parameters(count: parameters.count, numDefaultAssignments: defaultCount)
     }
 
+    /*
+    private func convertParameters(_ parameters: [Compiler_Protobuf_Parameter]) -> Parameters {
+        return Parameters(count: parameters.count)
+    }
+    */
     /// Convenience accessor for the currently active scope.
     private var currentScope: [String: Variable] {
         return scopes.top

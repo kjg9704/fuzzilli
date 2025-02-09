@@ -733,7 +733,18 @@ public class JavaScriptLifter: Lifter {
             case .beginArrowFunction(let op):
                 let LET = w.declarationKeyword(for: instr.output)
                 let V = w.declare(instr.output)
-                let vars = w.declareAll(instr.innerOutputs, usePrefix: "a")
+                var vars = w.declareAll(instr.innerOutputs, usePrefix: "a")
+                let numDefaults = Int(op.parameters.numDefaultAssignments)
+                if numDefaults > 0 {
+                    let startIndex = max(0, op.parameters.count - numDefaults)
+                    
+                    for i in startIndex..<op.parameters.count {
+                        if i < instr.inputs.count {
+                            let defaultValueExpr = w.retrieve(expressionsFor: [instr.input(i)]).first!.text
+                            vars[i] = "\(vars[i]) = \(defaultValueExpr)"
+                        }
+                    }
+                }
                 let PARAMS = liftParameters(op.parameters, as: vars)
                 w.emit("\(LET) \(V) = (\(PARAMS)) => {")
                 w.enterNewBlock()
@@ -747,7 +758,18 @@ public class JavaScriptLifter: Lifter {
             case .beginAsyncArrowFunction(let op):
                 let LET = w.declarationKeyword(for: instr.output)
                 let V = w.declare(instr.output)
-                let vars = w.declareAll(instr.innerOutputs, usePrefix: "a")
+                var vars = w.declareAll(instr.innerOutputs, usePrefix: "a")
+                let numDefaults = Int(op.parameters.numDefaultAssignments)
+                if numDefaults > 0 {
+                    let startIndex = max(0, op.parameters.count - numDefaults)
+                    
+                    for i in startIndex..<op.parameters.count {
+                        if i < instr.inputs.count {
+                            let defaultValueExpr = w.retrieve(expressionsFor: [instr.input(i)]).first!.text
+                            vars[i] = "\(vars[i]) = \(defaultValueExpr)"
+                        }
+                    }
+                }
                 let PARAMS = liftParameters(op.parameters, as: vars)
                 w.emit("\(LET) \(V) = async (\(PARAMS)) => {")
                 w.enterNewBlock()
@@ -1423,7 +1445,7 @@ public class JavaScriptLifter: Lifter {
         }
         return paramList.joined(separator: ", ")
     }
-
+    
     private func liftFunctionDefinitionBegin(_ instr: Instruction, keyword FUNCTION: String, using w: inout JavaScriptWriter) {
         // Function are lifted as `function f3(a4, a5, a6) { ...`.
         // This will produce functions with a recognizable .name property, which the JavaScriptExploreLifting code makes use of (see shouldTreatAsConstructor).
@@ -1437,7 +1459,21 @@ public class JavaScriptLifter: Lifter {
             functionName = "f\(instr.output.number)"
         }
         let NAME = w.declare(instr.output, as: functionName)
-        let vars = w.declareAll(instr.innerOutputs, usePrefix: "a")
+        var vars = w.declareAll(instr.innerOutputs, usePrefix: "a")
+        
+        let numDefaults = Int(op.parameters.numDefaultAssignments)
+        if numDefaults > 0 {
+            let startIndex = max(0, op.parameters.count - numDefaults)
+            
+            for i in startIndex..<op.parameters.count {
+                if i < instr.inputs.count {
+                    let defaultValueExpr = w.retrieve(expressionsFor: [instr.input(i)]).first!.text
+                    vars[i] = "\(vars[i]) = \(defaultValueExpr)"
+                    //print(vars[i])
+                }
+            }
+        }
+        
         let PARAMS = liftParameters(op.parameters, as: vars)
         w.emit("\(FUNCTION) \(NAME)(\(PARAMS)) {")
         w.enterNewBlock()
@@ -1723,7 +1759,6 @@ public class JavaScriptLifter: Lifter {
                 pendingExpressions.removeFirst(numExpressionsToEmit)
             }
             pendingExpressions.removeLast(matchingSuffixLength)
-
             for v in queriedVariables {
                 guard let expression = expressions[v] else {
                     fatalError("Don't have an expression for variable \(v)")

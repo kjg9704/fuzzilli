@@ -19,6 +19,7 @@ package fuzzilli.protobuf;
 message Parameters {
     uint32 count = 1;
     bool hasRest = 2;
+    uint32 numDefaultAssignments = 3;
 }
 
 message LoadInteger {
