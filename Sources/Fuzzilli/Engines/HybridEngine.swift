@@ -85,9 +85,10 @@ public class HybridEngine: FuzzEngine {
 
         if let pocSample = fuzzer.poc.getRandomPoC(), !pocSample.code.isEmpty { 
             b.traceHeader("Generating program based on PoC + Template")
-            b.trace("Generating program based on PoC + Template")
-            for instr in pocSample.code { 
-                b.adopt(instr)
+            b.adopting(from: pocSample) {
+                for instr in pocSample.code {
+                    b.adopt(instr)
+                }
             }
             template.generate(in: b)  
         } else { 
@@ -110,7 +111,6 @@ public class HybridEngine: FuzzEngine {
 
         let generatedProgram = generateTemplateProgram(template: template)
 
-        self.logger.info("Generated Program : \(generatedProgram)")
         // Update basic codegen statistics.
         totalInstructionsGenerated += generatedProgram.size
         programsGenerated += 1

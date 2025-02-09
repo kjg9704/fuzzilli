@@ -245,6 +245,7 @@ public class Fuzzer {
         evaluator.initialize(with: self)
         environment.initialize(with: self)
         corpus.initialize(with: self)
+        poc.initialize(with: self)
         minimizer.initialize(with: self)
         corpusGenerationEngine.initialize(with: self)
 
@@ -279,7 +280,7 @@ public class Fuzzer {
             }
         }
 
-        // Determine our initial state if necessary.
+        // Determine our initial state if necessary.``
         assert(state == .uninitialized || state == .corpusImport)
         if state == .uninitialized {
             let isChildNode = modules.values.contains(where: { $0 is DistributedFuzzingChildNode })

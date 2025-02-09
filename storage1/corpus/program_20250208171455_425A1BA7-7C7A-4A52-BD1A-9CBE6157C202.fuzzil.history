@@ -1,0 +1,906 @@
+// ===== [ Program E0278A9B-8C15-443F-9C92-366380CF3F54 ] =====
+// Generating program based on Codegen100 template
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator FloatArrayGenerator
+v0 <- CreateFloatArray [inf, 4.821219642047424, 0.14357002211390324]
+v1 <- CreateFloatArray [-1000000000.0]
+v2 <- CreateFloatArray [1000000000.0]
+// Code generator finished
+// Executing code generator ClassDefinitionGenerator
+v3 <- BeginClassDefinition
+    // Executing code generator ClassPrivateStaticMethodGenerator
+    BeginClassPrivateStaticMethod 'n' -> v4, v5
+        // Executing code generator ComputedPropertyConfigurationGenerator
+        // Code generator finished
+        // Executing code generator ResizableArrayBufferGenerator
+        v6 <- CreateNamedVariable 'ArrayBuffer', 'none'
+        v7 <- LoadInteger '3854479228'
+        BeginObjectLiteral
+            ObjectLiteralAddProperty `maxByteLength`, v7
+        v8 <- EndObjectLiteral
+        v9 <- LoadInteger '257'
+        v10 <- Construct v6, [v9, v8]
+        v11 <- CreateNamedVariable 'Int32Array', 'none'
+        v12 <- Construct v11, [v10]
+        // Code generator finished
+        Return v0
+    EndClassPrivateStaticMethod
+    // Code generator finished
+    // Executing code generator ClassPrivateStaticPropertyGenerator
+    ClassAddPrivateStaticProperty 'f' v1
+    // Code generator finished
+EndClassDefinition
+v13 <- Construct v3, []
+v14 <- Construct v3, []
+v15 <- Construct v3, []
+// Code generator finished
+// Executing code generator ArrayGenerator
+v16 <- CreateArray [v15, v1, v15]
+v17 <- CreateArray [v0, v14, v1]
+v18 <- CreateArray [v3, v17, v17, v1]
+// Code generator finished
+// Executing code generator StringGenerator
+v19 <- LoadString 'asyncDispose'
+v20 <- LoadString 'number'
+v21 <- LoadString '4X'
+// Code generator finished
+// End of prefix code. 13 variables are now visible
+// Splicing instruction 2 (BinaryOperation) from 75DCA782-4C14-402F-B173-5DB24203CA3F
+v22 <- LoadNull
+v23 <- LoadInteger '2'
+v24 <- BinaryOperation v22, '|', v23
+// Splicing done
+// Executing code generator ForOfLoopGenerator
+BeginForOfLoop v19 -> v25
+    // Executing code generator BuiltinObjectInstanceGenerator
+    v26 <- CreateNamedVariable 'WeakSet', 'none'
+    v27 <- Construct v26, []
+    // Code generator finished
+    // Executing code generator BuiltinGenerator
+    v28 <- CreateNamedVariable 'Map', 'none'
+    // Code generator finished
+    // Executing code generator ReassignmentGenerator
+    Reassign v3, v26
+    // Code generator finished
+    // Splicing instruction 46 (Construct) from F42D4B95-E557-46DC-817D-E184656020AC
+    v29 <- LoadInteger '16'
+    v30 <- CreateNamedVariable 'Float64Array', 'none'
+    v31 <- Construct v30, [v29]
+    // Splicing done
+    // Executing code generator ApiMethodCallGenerator
+    BeginTry
+        v32 <- CreateArray [v24, v20, v13, v22, v27]
+        v33 <- CallMethod v27, 'add', [v32]
+    BeginCatch -> v34
+    EndTryCatch
+    // Code generator finished
+    // Executing code generator UpdateGenerator
+    Update v25, '|', v1
+    // Code generator finished
+    // Executing code generator FunctionCallGenerator
+    v35 <- CallFunction (guarded) v30, [v27, v29, v25]
+    // Code generator finished
+    // Executing code generator ForInLoopGenerator
+    BeginForInLoop v27 -> v36
+        // Splicing instruction 1 (BeginObjectLiteral) from 7C4E6FE5-001B-4242-939D-01F9F9DD1335
+        BeginObjectLiteral
+            BeginObjectLiteralMethod `toString` -> v37, v38, v39
+                BeginTry
+                    v40 <- CallSuperMethod 'getOwnPropertySymbols', []
+                BeginCatch -> v41
+                EndTryCatch
+                Return v39
+            EndObjectLiteralMethod
+        v42 <- EndObjectLiteral
+        // Splicing done
+    EndForInLoop
+    // Code generator finished
+    // Executing code generator FunctionCallGenerator
+    v43 <- CallFunction (guarded) v35, [v18, v23, v17, v15]
+    // Code generator finished
+    // Executing code generator ElementUpdateGenerator
+    UpdateElement v0, '7', '-', v35
+    // Code generator finished
+    // Splicing instruction 5 (EndTryCatchFinally) from 97C88FA7-FD10-4374-AC20-70B6ED9A1935
+    BeginTry
+    BeginCatch -> v44
+    BeginFinally
+    EndTryCatch
+    // Splicing done
+EndForOfLoop
+// Code generator finished
+// Executing code generator ObjectHierarchyGenerator
+BeginObjectLiteral
+v45 <- EndObjectLiteral
+SetProperty v45, 'a', v23
+BeginObjectLiteral
+v46 <- EndObjectLiteral
+SetProperty v46, 'a', v23
+SetProperty v46, 'd', v23
+BeginObjectLiteral
+v47 <- EndObjectLiteral
+SetProperty v47, 'a', v23
+SetProperty v47, 'd', v23
+SetProperty v47, 'b', v0
+BeginObjectLiteral
+v48 <- EndObjectLiteral
+SetProperty v48, 'a', v23
+SetProperty v48, 'd', v23
+SetProperty v48, 'b', v17
+// Code generator finished
+// Splicing instruction 5 (Construct) from 61B68504-18C0-459E-BA6A-69F47543D8BC
+v49 <- LoadInteger '2003'
+v50 <- CreateNamedVariable 'Float32Array', 'none'
+v51 <- Construct v50, [v49]
+// Splicing done
+// Executing code generator MethodCallGenerator
+v52 <- CallMethod (guarded) v17, 'shift', []
+// Code generator finished
+// Executing code generator BinaryOperationGenerator
+v53 <- BinaryOperation v52, '/', v13
+// Code generator finished
+// Executing code generator ObjectBuilderFunctionGenerator
+v54 <- BeginPlainFunction -> v55, v56
+    BeginObjectLiteral
+        // Executing code generator ObjectLiteralPrototypeGenerator
+        ObjectLiteralSetPrototype v56
+        // Code generator finished
+        // Executing code generator ObjectLiteralSetterGenerator
+        BeginObjectLiteralSetter `c` -> v57, v58
+            // Splicing instruction 2 (Construct) from CBE8364B-420B-41B4-AA8C-CC30A9FBF54E
+            v59 <- LoadInteger '64'
+            v60 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+            v61 <- Construct v60, [v59]
+            // Splicing done
+            // Splicing instruction 4 (CallMethod) from D9310989-7D63-41F1-8CD8-4962ED8F6777
+            v62 <- CreateFloatArray [1000.0, 1000000000.0, 945143.9348877224, 4.0, 6.450953967758689, 0.4572603154724515, 927.6752698338087, 6.955996785137639]
+            v63 <- CreateNamedVariable 'Math', 'none'
+            v64 <- LoadInteger '268435439'
+            v65 <- BinaryOperation v62, '>>>', v64
+            v66 <- CallMethod v63, 'sinh', [v65]
+            // Splicing done
+            // Splicing instruction 4 (Construct) from 6E9125FD-DE2C-44E5-A368-38B01D1A1B06
+            v67 <- CreateNamedVariable 'Int32Array', 'none'
+            v68 <- CreateNamedVariable 'BigUint64Array', 'none'
+            v69 <- Construct v68, []
+            v70 <- Construct v67, [v69]
+            // Splicing done
+        EndObjectLiteralSetter
+        // Code generator finished
+        // Executing code generator ObjectLiteralMethodGenerator
+        BeginObjectLiteralMethod `n` -> v71, v72, v73, v74, v75
+            // Executing code generator MethodCallGenerator
+            v76 <- CallMethod (guarded) v73, 'entries', []
+            // Code generator finished
+            // Splicing instruction 3 (Construct) from BAB04D71-B229-4A99-A1A1-5691FB7C89BF
+            v77 <- LoadInteger '4096'
+            v78 <- CreateNamedVariable 'Float32Array', 'none'
+            v79 <- Construct v78, [v77]
+            // Splicing done
+            // Splicing instruction 3 (UnaryOperation) from B09B0F1B-A73C-44C2-A9C7-81AF1EE4D13F
+            v80 <- BeginConstructor -> v81
+            EndConstructor
+            v82 <- UnaryOperation v80, '--'
+            // Splicing done
+            // Executing code generator ForceSpidermonkeyIonGenerator
+            // Executing code generator ComputedPropertyAssignmentGenerator
+            SetComputedProperty v56, v80, v82
+            // Code generator finished
+            // Splicing instruction 2 (Compare) from 7028C273-8CC8-4D72-BAD0-9C2944905CC1
+            v83 <- LoadString 'ZFC1D'
+            v84 <- LoadBigInt '1550007785'
+            v85 <- Compare v84, '>=', v83
+            // Splicing done
+            Return v85
+        EndObjectLiteralMethod
+        // Code generator finished
+    v86 <- EndObjectLiteral
+    Return v86
+EndPlainFunction
+v87 <- CallFunction v54, [v49, v24]
+v88 <- CallFunction v54, [v23, v46]
+v89 <- CallFunction v54, [v23, v3]
+// Code generator finished
+// Executing code generator ForceSpidermonkeyIonGenerator
+BeginRepeatLoop '100' -> v90
+    v91 <- CallFunction v54, [v23, v89]
+EndRepeatLoop
+// Code generator finished
+// Splicing instruction 11 (BeginForOfLoop) from 1D57ADBF-8281-4329-9259-4580149D4DEB
+v92 <- LoadInteger '99'
+v93 <- CreateNamedVariable 'Uint16Array', 'none'
+v94 <- Construct v93, [v92]
+v95 <- LoadInteger '154'
+v96 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v97 <- Construct v96, [v95]
+BeginForOfLoop v97 -> v98
+    v99 <- DeleteElement v94, '2'
+    UpdateProperty v98, '/', v92
+    v100 <- TestInstanceOf v99, v93
+    v101 <- BeginConstructor -> v102, v103, v104
+        SetProperty v102, 'h', v100
+        SetProperty v102, 'd', v99
+    EndConstructor
+    v105 <- Construct v101, []
+EndForOfLoop
+// Program may be interesting due to new coverage: 77 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 28B83E7F-1A4F-4B87-8B27-62C1DA96A2DD ] =====
+// Mutating E0278A9B-8C15-443F-9C92-366380CF3F54 with FixupMutator
+v0 <- CreateFloatArray [inf, 4.821219642047424, 0.14357002211390324]
+v1 <- CreateFloatArray [-1000000000.0]
+v2 <- CreateFloatArray [1000000000.0]
+v3 <- BeginClassDefinition
+    BeginClassPrivateStaticMethod 'n' -> v4, v5
+        v6 <- CreateNamedVariable 'ArrayBuffer', 'none'
+        v7 <- LoadInteger '3854479228'
+        BeginObjectLiteral
+            ObjectLiteralAddProperty `maxByteLength`, v7
+        v8 <- EndObjectLiteral
+        v9 <- LoadInteger '257'
+        v10 <- Construct v6, [v9, v8]
+        v11 <- CreateNamedVariable 'Int32Array', 'none'
+        v12 <- Construct v11, [v10]
+        Return v0
+    EndClassPrivateStaticMethod
+    ClassAddPrivateStaticProperty 'f' v1
+EndClassDefinition
+v13 <- Construct v3, []
+v14 <- Construct v3, []
+v15 <- Construct v3, []
+v16 <- CreateArray [v15, v1, v15]
+v17 <- CreateArray [v0, v14, v1]
+v18 <- CreateArray [v3, v17, v17, v1]
+v19 <- LoadString 'asyncDispose'
+v20 <- LoadString 'number'
+v21 <- LoadString '4X'
+v22 <- LoadNull
+v23 <- LoadInteger '2'
+v24 <- BinaryOperation v22, '|', v23
+BeginForOfLoop v19 -> v25
+    v26 <- CreateNamedVariable 'WeakSet', 'none'
+    v27 <- Construct v26, []
+    v28 <- CreateNamedVariable 'Map', 'none'
+    Reassign v3, v26
+    v29 <- LoadInteger '16'
+    v30 <- CreateNamedVariable 'Float64Array', 'none'
+    v31 <- Construct v30, [v29]
+    BeginTry
+        v32 <- CreateArray [v24, v20, v13, v22, v27]
+        v33 <- CallMethod v27, 'add', [v32]
+    BeginCatch -> v34
+    EndTryCatch
+    Update v25, '|', v1
+    // Fixing next instruction
+    v35 <- CallFunction (guarded) v30, [v27, v29, v25]
+    // Fixup done
+    BeginForInLoop v27 -> v36
+        BeginObjectLiteral
+            BeginObjectLiteralMethod `toString` -> v37, v38, v39
+                BeginTry
+                    v40 <- CallSuperMethod 'getOwnPropertySymbols', []
+                BeginCatch -> v41
+                EndTryCatch
+                Return v39
+            EndObjectLiteralMethod
+        v42 <- EndObjectLiteral
+    EndForInLoop
+    // Fixing next instruction
+    v43 <- CallFunction (guarded) v35, [v18, v23, v17, v15]
+    // Fixup done
+    UpdateElement v0, '7', '-', v35
+    BeginTry
+    BeginCatch -> v44
+    BeginFinally
+    EndTryCatch
+EndForOfLoop
+BeginObjectLiteral
+v45 <- EndObjectLiteral
+SetProperty v45, 'a', v23
+BeginObjectLiteral
+v46 <- EndObjectLiteral
+SetProperty v46, 'a', v23
+SetProperty v46, 'd', v23
+BeginObjectLiteral
+v47 <- EndObjectLiteral
+SetProperty v47, 'a', v23
+SetProperty v47, 'd', v23
+SetProperty v47, 'b', v0
+BeginObjectLiteral
+v48 <- EndObjectLiteral
+SetProperty v48, 'a', v23
+SetProperty v48, 'd', v23
+SetProperty v48, 'b', v17
+v49 <- LoadInteger '2003'
+v50 <- CreateNamedVariable 'Float32Array', 'none'
+v51 <- Construct v50, [v49]
+// Fixing next instruction
+v52 <- CallMethod v17, 'shift', []
+// Fixup done
+v53 <- BinaryOperation v52, '/', v13
+v54 <- BeginPlainFunction -> v55, v56
+    BeginObjectLiteral
+        ObjectLiteralSetPrototype v56
+        BeginObjectLiteralSetter `c` -> v57, v58
+            v59 <- LoadInteger '64'
+            v60 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+            v61 <- Construct v60, [v59]
+            v62 <- CreateFloatArray [1000.0, 1000000000.0, 945143.9348877224, 4.0, 6.450953967758689, 0.4572603154724515, 927.6752698338087, 6.955996785137639]
+            v63 <- CreateNamedVariable 'Math', 'none'
+            v64 <- LoadInteger '268435439'
+            v65 <- BinaryOperation v62, '>>>', v64
+            // Fixing next instruction
+            v66 <- CallMethod v63, 'sinh', [v65]
+            // Fixup done
+            v67 <- CreateNamedVariable 'Int32Array', 'none'
+            v68 <- CreateNamedVariable 'BigUint64Array', 'none'
+            v69 <- Construct v68, []
+            v70 <- Construct v67, [v69]
+        EndObjectLiteralSetter
+        BeginObjectLiteralMethod `n` -> v71, v72, v73, v74, v75
+            // Fixing next instruction
+            v76 <- CallMethod (guarded) v73, 'entries', []
+            // Fixup done
+            v77 <- LoadInteger '4096'
+            v78 <- CreateNamedVariable 'Float32Array', 'none'
+            v79 <- Construct v78, [v77]
+            v80 <- BeginConstructor -> v81
+            EndConstructor
+            v82 <- UnaryOperation v80, '--'
+            SetComputedProperty v56, v80, v82
+            v83 <- LoadString 'ZFC1D'
+            v84 <- LoadBigInt '1550007785'
+            v85 <- Compare v84, '>=', v83
+            Return v85
+        EndObjectLiteralMethod
+    v86 <- EndObjectLiteral
+    Return v86
+EndPlainFunction
+v87 <- CallFunction v54, [v49, v24]
+v88 <- CallFunction v54, [v23, v46]
+v89 <- CallFunction v54, [v23, v3]
+BeginRepeatLoop '100' -> v90
+    v91 <- CallFunction v54, [v23, v89]
+EndRepeatLoop
+v92 <- LoadInteger '99'
+v93 <- CreateNamedVariable 'Uint16Array', 'none'
+v94 <- Construct v93, [v92]
+v95 <- LoadInteger '154'
+v96 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v97 <- Construct v96, [v95]
+BeginForOfLoop v97 -> v98
+    // Fixing next instruction
+    v99 <- DeleteElement v94, '2'
+    // Fixup done
+    UpdateProperty v98, '/', v92
+    v100 <- TestInstanceOf v99, v93
+    v101 <- BeginConstructor -> v102, v103, v104
+        SetProperty v102, 'h', v100
+        SetProperty v102, 'd', v99
+    EndConstructor
+    v105 <- Construct v101, []
+EndForOfLoop
+
+
+// ===== [ Program 80A9F312-64C6-4498-B4E0-C8754ACBB265 ] =====
+// Mutating 28B83E7F-1A4F-4B87-8B27-62C1DA96A2DD with InputMutator
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+v0 <- CreateFloatArray [inf, 4.821219642047424, 0.14357002211390324]
+v1 <- CreateFloatArray [-1000000000.0]
+v2 <- CreateFloatArray [1000000000.0]
+v3 <- BeginClassDefinition
+    BeginClassPrivateStaticMethod 'n' -> v4, v5
+        v6 <- CreateNamedVariable 'ArrayBuffer', 'none'
+        v7 <- LoadInteger '3854479228'
+        BeginObjectLiteral
+            ObjectLiteralAddProperty `maxByteLength`, v7
+        v8 <- EndObjectLiteral
+        v9 <- LoadInteger '257'
+        v10 <- Construct v6, [v9, v8]
+        v11 <- CreateNamedVariable 'Int32Array', 'none'
+        v12 <- Construct v11, [v10]
+        Return v0
+    EndClassPrivateStaticMethod
+    ClassAddPrivateStaticProperty 'f' v1
+EndClassDefinition
+v13 <- Construct v3, []
+v14 <- Construct v3, []
+v15 <- Construct v3, []
+v16 <- CreateArray [v15, v1, v15]
+v17 <- CreateArray [v0, v14, v1]
+v18 <- CreateArray [v3, v17, v17, v1]
+v19 <- LoadString 'asyncDispose'
+v20 <- LoadString 'number'
+v21 <- LoadString '4X'
+v22 <- LoadNull
+v23 <- LoadInteger '2'
+v24 <- BinaryOperation v22, '|', v23
+BeginForOfLoop v19 -> v25
+    v26 <- CreateNamedVariable 'WeakSet', 'none'
+    v27 <- Construct v26, []
+    v28 <- CreateNamedVariable 'Map', 'none'
+    Reassign v3, v26
+    v29 <- LoadInteger '16'
+    v30 <- CreateNamedVariable 'Float64Array', 'none'
+    v31 <- Construct v30, [v29]
+    BeginTry
+        v32 <- CreateArray [v24, v20, v13, v22, v27]
+        v33 <- CallMethod v27, 'add', [v32]
+    BeginCatch -> v34
+    EndTryCatch
+    Update v25, '|', v1
+    v35 <- CallFunction (guarded) v30, [v27, v29, v25]
+    BeginForInLoop v27 -> v36
+        BeginObjectLiteral
+            BeginObjectLiteralMethod `toString` -> v37, v38, v39
+                BeginTry
+                    v40 <- CallSuperMethod 'getOwnPropertySymbols', []
+                BeginCatch -> v41
+                EndTryCatch
+                // Replacing input 0 (v39) with v38
+                Return v38
+            EndObjectLiteralMethod
+        v42 <- EndObjectLiteral
+    EndForInLoop
+    v43 <- CallFunction (guarded) v35, [v18, v23, v17, v15]
+    UpdateElement v0, '7', '-', v35
+    BeginTry
+    BeginCatch -> v44
+    BeginFinally
+    EndTryCatch
+EndForOfLoop
+BeginObjectLiteral
+v45 <- EndObjectLiteral
+SetProperty v45, 'a', v23
+BeginObjectLiteral
+v46 <- EndObjectLiteral
+SetProperty v46, 'a', v23
+SetProperty v46, 'd', v23
+BeginObjectLiteral
+v47 <- EndObjectLiteral
+SetProperty v47, 'a', v23
+SetProperty v47, 'd', v23
+SetProperty v47, 'b', v0
+BeginObjectLiteral
+v48 <- EndObjectLiteral
+SetProperty v48, 'a', v23
+SetProperty v48, 'd', v23
+// Replacing input 1 (v17) with v17
+SetProperty v48, 'b', v17
+v49 <- LoadInteger '2003'
+v50 <- CreateNamedVariable 'Float32Array', 'none'
+v51 <- Construct v50, [v49]
+// Replacing input 0 (v17) with v18
+v52 <- CallMethod v18, 'shift', []
+v53 <- BinaryOperation v52, '/', v13
+v54 <- BeginPlainFunction -> v55, v56
+    BeginObjectLiteral
+        ObjectLiteralSetPrototype v56
+        BeginObjectLiteralSetter `c` -> v57, v58
+            v59 <- LoadInteger '64'
+            v60 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+            v61 <- Construct v60, [v59]
+            v62 <- CreateFloatArray [1000.0, 1000000000.0, 945143.9348877224, 4.0, 6.450953967758689, 0.4572603154724515, 927.6752698338087, 6.955996785137639]
+            v63 <- CreateNamedVariable 'Math', 'none'
+            v64 <- LoadInteger '268435439'
+            v65 <- BinaryOperation v62, '>>>', v64
+            v66 <- CallMethod v63, 'sinh', [v65]
+            v67 <- CreateNamedVariable 'Int32Array', 'none'
+            v68 <- CreateNamedVariable 'BigUint64Array', 'none'
+            // Replacing input 0 (v68) with v22
+            v69 <- Construct v22, []
+            v70 <- Construct v67, [v69]
+        EndObjectLiteralSetter
+        BeginObjectLiteralMethod `n` -> v71, v72, v73, v74, v75
+            v76 <- CallMethod (guarded) v73, 'entries', []
+            v77 <- LoadInteger '4096'
+            v78 <- CreateNamedVariable 'Float32Array', 'none'
+            v79 <- Construct v78, [v77]
+            v80 <- BeginConstructor -> v81
+            EndConstructor
+            v82 <- UnaryOperation v80, '--'
+            SetComputedProperty v56, v80, v82
+            v83 <- LoadString 'ZFC1D'
+            v84 <- LoadBigInt '1550007785'
+            v85 <- Compare v84, '>=', v83
+            Return v85
+        EndObjectLiteralMethod
+    v86 <- EndObjectLiteral
+    Return v86
+EndPlainFunction
+v87 <- CallFunction v54, [v49, v24]
+v88 <- CallFunction v54, [v23, v46]
+v89 <- CallFunction v54, [v23, v3]
+BeginRepeatLoop '100' -> v90
+    v91 <- CallFunction v54, [v23, v89]
+EndRepeatLoop
+v92 <- LoadInteger '99'
+v93 <- CreateNamedVariable 'Uint16Array', 'none'
+// Replacing input 1 (v92) with v47
+v94 <- Construct v93, [v47]
+v95 <- LoadInteger '154'
+v96 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v97 <- Construct v96, [v95]
+BeginForOfLoop v97 -> v98
+    v99 <- DeleteElement v94, '2'
+    // Replacing input 1 (v92) with v21
+    UpdateProperty v98, '/', v21
+    v100 <- TestInstanceOf v99, v93
+    v101 <- BeginConstructor -> v102, v103, v104
+        SetProperty v102, 'h', v100
+        SetProperty v102, 'd', v99
+    EndConstructor
+    v105 <- Construct v101, []
+EndForOfLoop
+// Program may be interesting due to new coverage: 41 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 730253A7-7B60-4829-A93D-5FDFB57E5AAA ] =====
+// Mutating 80A9F312-64C6-4498-B4E0-C8754ACBB265 with ExplorationMutator
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+v0 <- CreateFloatArray [inf, 4.821219642047424, 0.14357002211390324]
+v1 <- CreateFloatArray [-1000000000.0]
+v2 <- CreateFloatArray [1000000000.0]
+v3 <- BeginClassDefinition
+    BeginClassPrivateStaticMethod 'n' -> v4, v5
+        v6 <- CreateNamedVariable 'ArrayBuffer', 'none'
+        v7 <- LoadInteger '3854479228'
+        BeginObjectLiteral
+            ObjectLiteralAddProperty `maxByteLength`, v7
+        v8 <- EndObjectLiteral
+        v9 <- LoadInteger '257'
+        v10 <- Construct v6, [v9, v8]
+        v11 <- CreateNamedVariable 'Int32Array', 'none'
+        v12 <- Construct v11, [v10]
+        Return v0
+    EndClassPrivateStaticMethod
+    ClassAddPrivateStaticProperty 'f' v1
+EndClassDefinition
+// Exploring value v3
+SetProperty v3, 'name', v3
+// Exploring finished
+v13 <- Construct v3, []
+// Exploring value v13
+v14 <- GetProperty (guarded) v13, 'constructor'
+v15 <- Construct (guarded) v14, []
+// Exploring finished
+v16 <- Construct v3, []
+// Exploring value v16
+v17 <- CallMethod (guarded) v16, 'isPrototypeOf', [v3]
+// Exploring finished
+v18 <- Construct v3, []
+v19 <- CreateArray [v18, v1, v18]
+v20 <- CreateArray [v0, v16, v1]
+v21 <- CreateArray [v3, v20, v20, v1]
+v22 <- LoadString 'asyncDispose'
+// Exploring value v22
+v23 <- CallMethod (guarded) v22, 'sup', []
+// Exploring finished
+v24 <- LoadString 'number'
+// Exploring value v24
+v25 <- CallMethod (guarded) v24, 'concat', [v18]
+// Exploring finished
+v26 <- LoadString '4X'
+v27 <- LoadNull
+v28 <- LoadInteger '2'
+v29 <- BinaryOperation v27, '|', v28
+// Exploring value v29
+v30 <- BinaryOperation v29, '%', v29
+// Exploring finished
+BeginForOfLoop v22 -> v31
+    // Exploring value v31
+    v32 <- CallMethod (guarded) v31, 'toUpperCase', []
+    // Exploring finished
+    v33 <- CreateNamedVariable 'WeakSet', 'none'
+    // Exploring value v33
+    SetProperty v33, 'name', v33
+    // Exploring finished
+    v34 <- Construct v33, []
+    v35 <- CreateNamedVariable 'Map', 'none'
+    Reassign v3, v33
+    v36 <- LoadInteger '16'
+    v37 <- CreateNamedVariable 'Float64Array', 'none'
+    v38 <- Construct v37, [v36]
+    BeginTry
+        v39 <- CreateArray [v29, v24, v13, v27, v34]
+        v40 <- CallMethod v34, 'add', [v39]
+    BeginCatch -> v41
+    EndTryCatch
+    Update v31, '|', v1
+    v42 <- CallFunction (guarded) v37, [v34, v36, v31]
+    // Exploring value v42
+    v43 <- BinaryOperation v42, '??', v42
+    // Exploring finished
+    BeginForInLoop v34 -> v44
+        BeginObjectLiteral
+            BeginObjectLiteralMethod `toString` -> v45, v46, v47
+                BeginTry
+                    v48 <- CallSuperMethod 'getOwnPropertySymbols', []
+                BeginCatch -> v49
+                EndTryCatch
+                Return v46
+            EndObjectLiteralMethod
+        v50 <- EndObjectLiteral
+    EndForInLoop
+    v51 <- CallFunction (guarded) v42, [v21, v28, v20, v18]
+    // Exploring value v51
+    v52 <- BinaryOperation v51, '??', v51
+    // Exploring finished
+    UpdateElement v0, '7', '-', v42
+    BeginTry
+    BeginCatch -> v53
+    BeginFinally
+    EndTryCatch
+EndForOfLoop
+BeginObjectLiteral
+v54 <- EndObjectLiteral
+SetProperty v54, 'a', v28
+BeginObjectLiteral
+v55 <- EndObjectLiteral
+SetProperty v55, 'a', v28
+SetProperty v55, 'd', v28
+BeginObjectLiteral
+v56 <- EndObjectLiteral
+// Exploring value v56
+SetProperty v56, 'h', v56
+// Exploring finished
+SetProperty v56, 'a', v28
+SetProperty v56, 'd', v28
+SetProperty v56, 'b', v0
+BeginObjectLiteral
+v57 <- EndObjectLiteral
+// Exploring value v57
+SetProperty v57, 'c', v57
+// Exploring finished
+SetProperty v57, 'a', v28
+SetProperty v57, 'd', v28
+SetProperty v57, 'b', v20
+v58 <- LoadInteger '2003'
+v59 <- CreateNamedVariable 'Float32Array', 'none'
+v60 <- Construct v59, [v58]
+v61 <- CallMethod v21, 'shift', []
+// Exploring value v61
+v62 <- Construct (guarded) v61, []
+// Exploring finished
+v63 <- BinaryOperation v61, '/', v13
+v64 <- BeginPlainFunction -> v65, v66
+    BeginObjectLiteral
+        ObjectLiteralSetPrototype v66
+        BeginObjectLiteralSetter `c` -> v67, v68
+            v69 <- LoadInteger '64'
+            v70 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+            v71 <- Construct v70, [v69]
+            v72 <- CreateFloatArray [1000.0, 1000000000.0, 945143.9348877224, 4.0, 6.450953967758689, 0.4572603154724515, 927.6752698338087, 6.955996785137639]
+            v73 <- CreateNamedVariable 'Math', 'none'
+            v74 <- LoadInteger '268435439'
+            v75 <- BinaryOperation v72, '>>>', v74
+            v76 <- CallMethod v73, 'sinh', [v75]
+            v77 <- CreateNamedVariable 'Int32Array', 'none'
+            v78 <- CreateNamedVariable 'BigUint64Array', 'none'
+            v79 <- Construct v27, []
+            v80 <- Construct v77, [v79]
+        EndObjectLiteralSetter
+        BeginObjectLiteralMethod `n` -> v81, v82, v83, v84, v85
+            v86 <- CallMethod (guarded) v83, 'entries', []
+            v87 <- LoadInteger '4096'
+            v88 <- CreateNamedVariable 'Float32Array', 'none'
+            v89 <- Construct v88, [v87]
+            v90 <- BeginConstructor -> v91
+            EndConstructor
+            v92 <- UnaryOperation v90, '--'
+            SetComputedProperty v66, v90, v92
+            v93 <- LoadString 'ZFC1D'
+            v94 <- LoadBigInt '1550007785'
+            v95 <- Compare v94, '>=', v93
+            Return v95
+        EndObjectLiteralMethod
+    v96 <- EndObjectLiteral
+    Return v96
+EndPlainFunction
+v97 <- CallFunction v64, [v58, v29]
+v98 <- CallFunction v64, [v28, v55]
+v99 <- CallFunction v64, [v28, v3]
+// Exploring value v99
+v100 <- CallMethod (guarded) v99, 'n', [v29, v29, v64, v64]
+// Exploring finished
+BeginRepeatLoop '100' -> v101
+    v102 <- CallFunction v64, [v28, v99]
+EndRepeatLoop
+v103 <- LoadInteger '99'
+v104 <- CreateNamedVariable 'Uint16Array', 'none'
+v105 <- Construct v104, [v56]
+// Exploring value v105
+v106 <- CallMethod (guarded) v105, 'findLastIndex', [v24]
+// Exploring finished
+v107 <- LoadInteger '154'
+// Exploring value v107
+v108 <- BinaryOperation v107, '|', v107
+// Exploring finished
+v109 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v110 <- Construct v109, [v107]
+BeginForOfLoop v110 -> v111
+    // Exploring value v111
+    v112 <- UnaryOperation v111, '--'
+    // Exploring finished
+    v113 <- DeleteElement v105, '2'
+    UpdateProperty v111, '/', v26
+    v114 <- TestInstanceOf v113, v104
+    // Exploring value v114
+    v115 <- BinaryOperation v114, '&&', v114
+    // Exploring finished
+    v116 <- BeginConstructor -> v117, v118, v119
+        SetProperty v117, 'h', v114
+        SetProperty v117, 'd', v113
+    EndConstructor
+    v120 <- Construct v116, []
+EndForOfLoop
+// Program may be interesting due to new coverage: 53 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program 425A1BA7-7C7A-4A52-BD1A-9CBE6157C202 ] =====
+// Minimizing 730253A7-7B60-4829-A93D-5FDFB57E5AAA
+v0 <- CreateFloatArray [inf, 4.821219642047424, 0.14357002211390324]
+v1 <- CreateFloatArray [-1000000000.0]
+v2 <- CreateFloatArray [1000000000.0]
+v3 <- BeginClassDefinition
+    BeginClassPrivateStaticMethod 'n' -> v4, v5
+        v6 <- CreateNamedVariable 'ArrayBuffer', 'none'
+        v7 <- LoadInteger '3854479228'
+        BeginObjectLiteral
+            ObjectLiteralAddProperty `maxByteLength`, v7
+        v8 <- EndObjectLiteral
+        v9 <- LoadInteger '257'
+        v10 <- Construct v6, [v9, v8]
+        v11 <- CreateNamedVariable 'Int32Array', 'none'
+        v12 <- Construct v11, [v10]
+        Return v0
+    EndClassPrivateStaticMethod
+    ClassAddPrivateStaticProperty 'f' v1
+EndClassDefinition
+SetProperty v3, 'name', v3
+v13 <- Construct v3, []
+v14 <- GetProperty (guarded) v13, 'constructor'
+v15 <- Construct (guarded) v14, []
+v16 <- Construct v3, []
+v17 <- CallMethod (guarded) v16, 'isPrototypeOf', [v3]
+v18 <- Construct v3, []
+v19 <- CreateArray [v18, v1, v18]
+v20 <- CreateArray [v0, v16, v1]
+v21 <- CreateArray [v3, v20, v20, v1]
+v22 <- LoadString 'asyncDispose'
+v23 <- CallMethod (guarded) v22, 'sup', []
+v24 <- LoadString 'number'
+v25 <- CallMethod (guarded) v24, 'concat', [v18]
+v26 <- LoadString '4X'
+v27 <- LoadNull
+v28 <- LoadInteger '2'
+v29 <- BinaryOperation v27, '|', v28
+v30 <- BinaryOperation v29, '%', v29
+BeginForOfLoop v22 -> v31
+    v32 <- CallMethod (guarded) v31, 'toUpperCase', []
+    v33 <- CreateNamedVariable 'WeakSet', 'none'
+    SetProperty v33, 'name', v33
+    v34 <- Construct v33, []
+    v35 <- CreateNamedVariable 'Map', 'none'
+    Reassign v3, v33
+    v36 <- LoadInteger '16'
+    v37 <- CreateNamedVariable 'Float64Array', 'none'
+    v38 <- Construct v37, [v36]
+    BeginTry
+        v39 <- CreateArray [v29, v24, v13, v27, v34]
+        v40 <- CallMethod v34, 'add', [v39]
+    BeginCatch -> v41
+    EndTryCatch
+    Update v31, '|', v1
+    v42 <- CallFunction (guarded) v37, [v34, v36, v31]
+    v43 <- BinaryOperation v42, '??', v42
+    BeginForInLoop v34 -> v44
+        BeginObjectLiteral
+            BeginObjectLiteralMethod `toString` -> v45, v46, v47
+                BeginTry
+                    v48 <- CallSuperMethod 'getOwnPropertySymbols', []
+                BeginCatch -> v49
+                EndTryCatch
+                Return v46
+            EndObjectLiteralMethod
+        v50 <- EndObjectLiteral
+    EndForInLoop
+    v51 <- CallFunction (guarded) v42, [v21, v28, v20, v18]
+    v52 <- BinaryOperation v51, '??', v51
+    UpdateElement v0, '7', '-', v42
+    BeginTry
+    BeginCatch -> v53
+    BeginFinally
+    EndTryCatch
+EndForOfLoop
+BeginObjectLiteral
+v54 <- EndObjectLiteral
+SetProperty v54, 'a', v28
+BeginObjectLiteral
+v55 <- EndObjectLiteral
+SetProperty v55, 'a', v28
+SetProperty v55, 'd', v28
+BeginObjectLiteral
+v56 <- EndObjectLiteral
+SetProperty v56, 'h', v56
+SetProperty v56, 'a', v28
+SetProperty v56, 'd', v28
+SetProperty v56, 'b', v0
+BeginObjectLiteral
+v57 <- EndObjectLiteral
+SetProperty v57, 'c', v57
+SetProperty v57, 'a', v28
+SetProperty v57, 'd', v28
+SetProperty v57, 'b', v20
+v58 <- LoadInteger '2003'
+v59 <- CreateNamedVariable 'Float32Array', 'none'
+v60 <- Construct v59, [v58]
+v61 <- CallMethod v21, 'shift', []
+v62 <- Construct (guarded) v61, []
+v63 <- BinaryOperation v61, '/', v13
+v64 <- BeginPlainFunction -> v65, v66
+    BeginObjectLiteral
+        ObjectLiteralSetPrototype v66
+        BeginObjectLiteralSetter `c` -> v67, v68
+            v69 <- LoadInteger '64'
+            v70 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+            v71 <- Construct v70, [v69]
+            v72 <- CreateFloatArray [1000.0, 1000000000.0, 945143.9348877224, 4.0, 6.450953967758689, 0.4572603154724515, 927.6752698338087, 6.955996785137639]
+            v73 <- CreateNamedVariable 'Math', 'none'
+            v74 <- LoadInteger '268435439'
+            v75 <- BinaryOperation v72, '>>>', v74
+            v76 <- CallMethod v73, 'sinh', [v75]
+            v77 <- CreateNamedVariable 'Int32Array', 'none'
+            v78 <- CreateNamedVariable 'BigUint64Array', 'none'
+            v79 <- Construct v27, []
+            v80 <- Construct v77, [v79]
+        EndObjectLiteralSetter
+        BeginObjectLiteralMethod `n` -> v81, v82, v83, v84, v85
+            v86 <- CallMethod (guarded) v83, 'entries', []
+            v87 <- LoadInteger '4096'
+            v88 <- CreateNamedVariable 'Float32Array', 'none'
+            v89 <- Construct v88, [v87]
+            v90 <- BeginConstructor -> v91
+            EndConstructor
+            v92 <- UnaryOperation v90, '--'
+            SetComputedProperty v66, v90, v92
+            v93 <- LoadString 'ZFC1D'
+            v94 <- LoadBigInt '1550007785'
+            v95 <- Compare v94, '>=', v93
+            Return v95
+        EndObjectLiteralMethod
+    v96 <- EndObjectLiteral
+    Return v96
+EndPlainFunction
+v97 <- CallFunction v64, [v58, v29]
+v98 <- CallFunction v64, [v28, v55]
+v99 <- CallFunction v64, [v28, v3]
+v100 <- CallMethod (guarded) v99, 'n', [v29, v29, v64, v64]
+BeginRepeatLoop '100' -> v101
+    v102 <- CallFunction v64, [v28, v99]
+EndRepeatLoop
+v103 <- LoadInteger '99'
+v104 <- CreateNamedVariable 'Uint16Array', 'none'
+v105 <- Construct v104, [v56]
+v106 <- CallMethod (guarded) v105, 'findLastIndex', [v24]
+v107 <- LoadInteger '154'
+v108 <- BinaryOperation v107, '|', v107
+v109 <- CreateNamedVariable 'Uint8ClampedArray', 'none'
+v110 <- Construct v109, [v107]
+BeginForOfLoop v110 -> v111
+    v112 <- UnaryOperation v111, '--'
+    v113 <- DeleteElement v105, '2'
+    UpdateProperty v111, '/', v26
+    v114 <- TestInstanceOf v113, v104
+    v115 <- BinaryOperation v114, '&&', v114
+    v116 <- BeginConstructor -> v117, v118, v119
+        SetProperty v117, 'h', v114
+        SetProperty v117, 'd', v113
+    EndConstructor
+    v120 <- Construct v116, []
+EndForOfLoop
+// Program is interesting due to new coverage: 14 newly discovered edges in the CFG of the target
+
+

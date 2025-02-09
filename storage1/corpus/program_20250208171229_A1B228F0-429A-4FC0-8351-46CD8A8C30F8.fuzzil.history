@@ -1,0 +1,238 @@
+// ===== [ Program FBD0D563-E7FA-4210-8170-6A03A6226EB5 ] =====
+// Generating program based on JSONFuzzer template
+// RUNNER ARGS: ../gecko-dev/obj-fuzzbuild/dist/bin/js --baseline-warmup-threshold=10 --ion-warmup-threshold=100 --ion-check-range-analysis --ion-extra-checks --fuzzing-safe --disable-oom-functions --reprl
+// Start of prefix code
+// Executing code generator ObjectBuilderFunctionGenerator
+v0 <- BeginPlainFunction -> 
+    v1 <- LoadInteger '-536870912'
+    v2 <- LoadString '10801'
+    v3 <- LoadFloat '-881.9463521180619'
+    BeginObjectLiteral
+        // Executing code generator ObjectLiteralPropertyGenerator
+        ObjectLiteralAddProperty `g`, v1
+        // Code generator finished
+        // Executing code generator ObjectLiteralElementGenerator
+        ObjectLiteralAddElement `2304`, v1
+        // Code generator finished
+        // Executing code generator ObjectLiteralMethodGenerator
+        BeginObjectLiteralMethod `m` -> v4, v5, v6
+            // Executing code generator UpdateGenerator
+            Update v6, '>>>', v3
+            // Code generator finished
+            // Executing code generator BinaryOperationGenerator
+            v7 <- BinaryOperation v5, '>>>', v2
+            // Code generator finished
+            // Executing code generator TrivialFunctionGenerator
+            v8 <- BeginPlainFunction -> 
+                Return v6
+            EndPlainFunction
+            // Code generator finished
+            Return v2
+        EndObjectLiteralMethod
+        // Code generator finished
+    v9 <- EndObjectLiteral
+    Return v9
+EndPlainFunction
+v10 <- CallFunction v0, []
+v11 <- CallFunction v0, []
+v12 <- CallFunction v0, []
+// Code generator finished
+// Executing code generator ObjectConstructorGenerator
+v13 <- BeginConstructor -> v14, v15
+    SetProperty v14, 'h', v15
+EndConstructor
+v16 <- Construct v13, [v11]
+v17 <- Construct v13, [v11]
+v18 <- Construct v13, [v12]
+// Code generator finished
+// Executing code generator ClassDefinitionGenerator
+v19 <- BeginClassDefinition
+    // Executing code generator ClassStaticGetterGenerator
+    BeginClassStaticGetter `f` -> v20
+        // Executing code generator PrivatePropertyRetrievalGenerator
+        // Code generator finished
+        // Executing code generator SuperPropertyUpdateGenerator
+        UpdateSuperProperty 'h', '/', v20
+        // Code generator finished
+        // Executing code generator ApiFunctionCallGenerator
+        BeginTry
+            v21 <- CallFunction v0, []
+        BeginCatch -> v22
+        EndTryCatch
+        // Code generator finished
+        Return v16
+    EndClassStaticGetter
+    // Code generator finished
+    // Executing code generator ClassStaticElementGenerator
+    ClassAddStaticElement '3'
+    // Code generator finished
+    // Executing code generator ClassStaticElementGenerator
+    ClassAddStaticElement '9' v0
+    // Code generator finished
+EndClassDefinition
+v23 <- Construct v19, []
+v24 <- Construct v19, []
+v25 <- Construct v19, []
+// Code generator finished
+// End of prefix code. 12 variables are now visible
+// Splicing instruction 2 (Construct) from BC3C398C-AFFB-4C92-8384-FB05575A6538
+v26 <- LoadInteger '3'
+v27 <- CreateNamedVariable 'BigUint64Array', 'none'
+v28 <- Construct v27, [v26]
+// Splicing done
+// Splicing instruction 2 (CallMethod) from 1E21BF3A-69C1-4C7E-888A-A2BBF09DEAE2
+v29 <- LoadString 'm'
+v30 <- CallMethod v29, 'charAt', [v26]
+// Splicing done
+// Splicing instruction 2 (CallMethod) from 97F19EE2-AF1D-4006-95DB-24A7BA45C904
+v31 <- CreateNamedVariable 'Math', 'none'
+v32 <- LoadFloat '-378714.9686903084'
+v33 <- CallMethod v31, 'trunc', [v32]
+// Splicing done
+// Splicing instruction 3 (CreateArray) from 5FAEC8F2-897E-4ED9-98E7-EE0A18E75344
+v34 <- CreateFloatArray [1000000.0, 7.355764398462678e+307, 3.0, 488561.16890580184]
+v35 <- CreateArray [v34]
+// Splicing done
+// Executing code generator ReassignmentGenerator
+// Code generator finished
+// Executing code generator ComplexForLoopGenerator
+BeginForLoopInitializer
+    v36 <- LoadInteger '0'
+    v37 <- LoadInteger '10'
+BeginForLoopCondition -> v38, v39
+    v40 <- Compare v38, '<', v39
+BeginForLoopAfterthought v40 -> v41, v42
+    v43 <- UnaryOperation v41, '++'
+    v44 <- UnaryOperation v42, '--'
+BeginForLoopBody -> v45, v46
+    // Splicing instruction 2 (Construct) from 09A98239-EA99-46D4-A7A1-A4DBA2066A22
+    v47 <- CreateNamedVariable 'Set', 'none'
+    v48 <- Construct v47, []
+    // Splicing done
+    // Splicing instruction 1 (CallMethod) from 1564F2B1-AA97-419A-8617-5178C1922412
+    v49 <- CreateNamedVariable 'Math', 'none'
+    v50 <- CallMethod v49, 'atan2', []
+    // Splicing done
+    // Executing code generator MethodCallGenerator
+    v51 <- CallMethod (guarded) v23, 'p', [v31, v24, v50, v24, v49]
+    // Code generator finished
+    // Executing code generator FastToSlowPropertiesGenerator
+    BeginRepeatLoop '32' -> v52
+        v53 <- LoadString 'p'
+        v54 <- BinaryOperation v53, '+', v52
+        SetComputedProperty v11, v54, v52
+    EndRepeatLoop
+    // Code generator finished
+EndForLoop
+// Code generator finished
+v55 <- CreateNamedVariable 'JSON', 'none'
+v56 <- CallMethod v55, 'stringify', [v18]
+v57 <- CallMethod v55, 'stringify', [v24]
+v58 <- CallMethod v55, 'stringify', [v26]
+v59 <- CallMethod v55, 'stringify', [v24]
+v60 <- CallMethod v55, 'stringify', [v59]
+v61 <- BeginPlainFunction -> v62
+    v63 <- BeginPlainFunction -> v64
+        v65 <- CreateNamedVariable 'Math', 'none'
+        v66 <- LoadFloat '0.6917522460366564'
+        v67 <- BinaryOperation v66, '*', v64
+        v68 <- CallMethod v65, 'floor', [v67]
+        Return v68
+    EndPlainFunction
+    v69 <- CreateNamedVariable 'String', 'none'
+    v70 <- GetProperty v62, 'length'
+    v71 <- CallFunction v63, [v70]
+    v72 <- LoadInteger '0'
+    v73 <- CallMethod v62, 'substring', [v72, v71]
+    v74 <- LoadInteger '1'
+    v75 <- BinaryOperation v71, '+', v74
+    v76 <- CallMethod v62, 'substring', [v75]
+    v77 <- CallMethod v62, 'charCodeAt', [v71]
+    v78 <- LoadInteger '108'
+    v79 <- BinaryOperation v77, '^', v78
+    v80 <- CallMethod v69, 'fromCharCode', [v79]
+    v81 <- BinaryOperation v73, '+', v80
+    v82 <- BinaryOperation v81, '+', v76
+    Return v82
+EndPlainFunction
+v83 <- CallMethod (guarded) v55, 'parse', [v58]
+v84 <- CallMethod (guarded) v55, 'parse', [v60]
+v85 <- CallMethod (guarded) v55, 'parse', [v60]
+v86 <- CallMethod (guarded) v55, 'parse', [v57]
+v87 <- CallMethod (guarded) v55, 'parse', [v56]
+v88 <- CallMethod (guarded) v55, 'parse', [v59]
+v89 <- CallMethod (guarded) v55, 'parse', [v57]
+v90 <- CallMethod (guarded) v55, 'parse', [v56]
+v91 <- CallMethod (guarded) v55, 'parse', [v58]
+v92 <- CallMethod (guarded) v55, 'parse', [v60]
+// Splicing instruction 3 (CallFunction) from 7D954716-C73E-49FA-8AB2-B258F1ECFD35
+v93 <- CreateNamedVariable 'Array', 'none'
+v94 <- LoadInteger '4'
+v95 <- CallFunction v93, [v94]
+// Splicing done
+// Splicing instruction 13 (BeginPlainFunction) from E0480FC2-437C-4683-8B4B-B0BC088D32EF
+v96 <- LoadInteger '173'
+v97 <- CreateNamedVariable 'BigUint64Array', 'none'
+v98 <- Construct v97, [v96]
+v99 <- LoadInteger '4096'
+v100 <- CreateNamedVariable 'Uint16Array', 'none'
+v101 <- Construct v100, [v99]
+v102 <- BeginPlainFunction -> v103, v104
+    BeginObjectLiteral
+        ObjectLiteralCopyProperties v98
+        ObjectLiteralCopyProperties v101
+    v105 <- EndObjectLiteral
+EndPlainFunction
+// Splicing done
+// Splicing instruction 15 (CallFunction) from E74C2356-C2A0-4B81-A62F-8ADBC57D1996
+v106 <- CreateFloatArray [-2.0, 2.2250738585072014e-308, -0.0, 0.7305331466344601, 1.7976931348623157e+308, -7.383066608991325e+307, -8.19980775984432e+307]
+v107 <- Construct v13, []
+BeginObjectLiteral
+    ObjectLiteralSetPrototype v107
+    ObjectLiteralAddComputedProperty v13, v106
+v108 <- EndObjectLiteral
+v109 <- CallFunction (guarded) v108, []
+// Splicing done
+// Executing code generator ConstructorCallWithSpreadGenerator
+v110 <- ConstructWithSpread (guarded) v19, [v17, ...v95, ...v109, v94, ...v97, v92]
+// Code generator finished
+// Splicing instruction 4 (EndClassDefinition) from 586A344C-DD15-4B76-803C-F47FB29C77FB
+v111 <- BeginClassDefinition
+    BeginClassInstanceMethod 'valueOf' -> v112, v113, v114
+        v115 <- UnaryOperation '!', v114
+    EndClassInstanceMethod
+EndClassDefinition
+// Program may be interesting due to new coverage: 76 newly discovered edges in the CFG of the target
+
+
+// ===== [ Program A1B228F0-429A-4FC0-8351-46CD8A8C30F8 ] =====
+// Minimizing FBD0D563-E7FA-4210-8170-6A03A6226EB5
+v0 <- LoadInteger '-536870912'
+BeginObjectLiteral
+    ObjectLiteralAddProperty `g`, v0
+    ObjectLiteralAddElement `2304`, v0
+    BeginObjectLiteralMethod `m` -> v1, v2, v3
+        Return v2
+    EndObjectLiteralMethod
+v4 <- EndObjectLiteral
+v5 <- BeginConstructor -> v6, v7
+    SetProperty v6, 'h', v7
+EndConstructor
+v8 <- Construct v5, [v4]
+v9 <- BeginClassDefinition
+EndClassDefinition
+v10 <- Construct v9, []
+v11 <- LoadInteger '3'
+v12 <- CreateNamedVariable 'JSON', 'none'
+v13 <- CallMethod v12, 'stringify', [v8]
+v14 <- CallMethod v12, 'stringify', [v10]
+v15 <- CallMethod v12, 'stringify', [v10]
+v16 <- CallMethod v12, 'stringify', [v15]
+v17 <- CallMethod v12, 'parse', [v11]
+v18 <- CallMethod v12, 'parse', [v16]
+v19 <- CallMethod v12, 'parse', [v14]
+v20 <- CallMethod v12, 'parse', [v13]
+v21 <- CallMethod v12, 'parse', [v13]
+// Program is interesting due to new coverage: 75 newly discovered edges in the CFG of the target
+
+

@@ -1,0 +1,2 @@
+JSON.isRawJSON(JSON);
+gc();
