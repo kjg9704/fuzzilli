@@ -1,2 +1,0 @@
-JSON.isRawJSON(JSON);
-gc();
